@@ -1,0 +1,4 @@
+Nombre = Polera;Precio = 9990;Descripcion = Polera a rayas;Codigo = a1;Talla = m;Marca = mi marca;Color = verde/rojo
+Nombre = Poleron;Precio = 19990;Descripcion = Poleron con gorro;Codigo = b2;Talla = l;Marca = mi marca 2;Color = gris
+Nombre = Jeans;Precio = 29990;Descripcion = Jeans rectos;Codigo = c3;Talla = 42;Marca = mi marca;Color = azul
+Nombre = 3;Precio = 3;Descripcion = 3;Codigo = 3;Talla = 3;Marca = 3;Color = 3
