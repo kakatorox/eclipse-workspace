@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import cl.desafiolatam.consumirapirest1.response.Post;
+import cl.desafiolatam.consumirapirest1.response.ResponseObject;
 import cl.desafiolatam.consumirapirest1.service.ApiConsume;
 
 public class ApiConsumeImpl implements ApiConsume {
@@ -36,6 +37,23 @@ public class ApiConsumeImpl implements ApiConsume {
 		System.out.println("GET: getPost Servicio Invocado correctamente : "+ response.getStatus());
 		
 		return listaPost;
+	}
+	public ResponseObject getPostResponseObject() {
+		// TODO Auto-generated method stub
+		ResponseObject responseObject = new ResponseObject();
+		WebTarget target = client.target("https://jsonplaceholder.typicode.com").path("posts");
+		
+		Invocation.Builder invocationbuilder = target.request(MediaType.APPLICATION_JSON);
+		
+		Response response = invocationbuilder.get();
+		
+		List<Post> listaPost = response.readEntity(new GenericType<List<Post>>() {});
+		
+		System.out.println("GET: getPost Servicio Invocado correctamente : "+ response.getStatus());
+		responseObject.setBody(listaPost);
+		responseObject.setStatus(response.getStatus());
+		
+		return responseObject;
 	}
 
 	public void setPost(Post post) {
@@ -95,6 +113,8 @@ public class ApiConsumeImpl implements ApiConsume {
 		
 		return lisPostOne;
 	}
+
+	
 	
 	
 
