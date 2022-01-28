@@ -40,28 +40,28 @@ public class CalculadoraTest {
 
 	@Test
 	void restarNum() {
-		logger.info("Calculadora Restando");
+		logger.info("Resta");
 		calc = new Calculadora();
 		boolean re = calc.restar(1, 1000000000);
 		assertTrue(re);
 	}
 	@Test
 	void sumarNum() {
-		logger.info("Calculadora Restando");
+		logger.info("Suma");
 		calc = new Calculadora();
 		int re = calc.sumar(1, 1);
 		assertEquals(2,re);
 	}
 	@Test
 	void multiplicarNum() {
-		logger.info("Calculadora Restando");
+		logger.info("Multiplicación");
 		calc = new Calculadora();
 		int re = calc.multiplicar(1, 1);
 		assertEquals(1,re);
 	}
 	@Test
 	void dividirNum() {
-		logger.info("Calculadora Restando");
+		logger.info("División");
 		calc = new Calculadora();
 		String re = calc.dividir(1, 0);
 		assertSame("Infinity",re);
