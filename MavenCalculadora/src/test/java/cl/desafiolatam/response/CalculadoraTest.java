@@ -31,14 +31,18 @@ public class CalculadoraTest {
 
 	@BeforeEach
 	void init1() {		
-		logger.info("Test Número:" + cont);
+		logger.info("\n------------------------------\n"
+				+ "                              \n"
+				+ "Test Número " + cont
+				+ "\n                              \n"+
+				"------------------------------\n");
 	}
 
 	@Test
 	void restarNum() {
 		logger.info("Calculadora Restando");
 		calc = new Calculadora();
-		boolean re = calc.restar(1, 10000000000);
+		boolean re = calc.restar(1, 1000000000);
 		assertTrue(re);
 	}
 	@Test
@@ -64,7 +68,12 @@ public class CalculadoraTest {
 	}
 	@AfterEach
 	void endCalculadora() {		
-		logger.info("Termino del Test Numero" + cont);
+		logger.info("\n------------------------------\n"
+				+ "                              \n"
+				+ "Termino del Test Numero " + cont
+				+ "\n                              \n"+
+				"------------------------------\n");
+		
 		cont++;
 	}
 
