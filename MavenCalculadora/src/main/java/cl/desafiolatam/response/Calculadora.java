@@ -12,7 +12,7 @@ public class Calculadora {
 		}
 
 		public boolean restar(int a, int b) {
-
+			
 			int res = 0;
 			boolean bRes = false;
 			res = a - b;
