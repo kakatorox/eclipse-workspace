@@ -17,7 +17,7 @@ public class Recordatorio {
 	public void setCalendario(Calendar calendario) {
 		this.calendario = calendario;
 	}
-	public TreeMap getNota() {
+	public String getNota() {
 		return nota;
 	}
 	public void setNota(String nota) {
