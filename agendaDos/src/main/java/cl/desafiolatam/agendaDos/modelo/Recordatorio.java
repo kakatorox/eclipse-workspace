@@ -5,8 +5,8 @@ import java.util.TreeMap;
 
 public class Recordatorio {
 	private Calendar calendario;
-	private String nota;
-	public Recordatorio(Calendar calendario, String nota) {
+	private TreeMap<Calendar,String> nota;
+	public Recordatorio(Calendar calendario, TreeMap nota) {
 		super();
 		this.calendario = calendario;
 		this.nota = nota;
@@ -17,10 +17,10 @@ public class Recordatorio {
 	public void setCalendario(Calendar calendario) {
 		this.calendario = calendario;
 	}
-	public String getNota() {
+	public TreeMap<Calendar,String> getNota() {
 		return nota;
 	}
-	public void setNota(String nota) {
+	public void setNota(TreeMap nota) {
 		this.nota = nota;
 	}
 	@Override
