@@ -81,19 +81,16 @@ public class Recordatorio {
 		return null;
 	}
 
-	public TreeMap<String,TreeMap<Calendar,TreeMap<Calendar, String>>> getDbRecordatorio() {
-		return dbRecordatorio;
-	}
-
-	public void setDbRecordatorio(String tituloDeRecordatorio,int anio,) {
-		Calendar nCalendario = new GregorianCalendar();
-		nCalendario.set(Calendar.YEAR, anio);
-		nCalendario.set(Calendar.MONTH, mes);
-		nCalendario.set(Calendar.DATE, dia);
-		nCalendario.set(Calendar.HOUR, hora);
-		nCalendario.set(Calendar.MINUTE, min);
-		nCalendario.set(Calendar.SECOND, seg);
-		this.dbRecordatorio.put(tituloRecordatorio, null);
-	}
+	/*
+	 * public TreeMap<String,TreeMap<Calendar,TreeMap<Calendar, String>>>
+	 * getDbRecordatorio() { return dbRecordatorio; }
+	 * 
+	 * public void setDbRecordatorio(String tituloDeRecordatorio,int anio,) {
+	 * Calendar nCalendario = new GregorianCalendar();
+	 * nCalendario.set(Calendar.YEAR, anio); nCalendario.set(Calendar.MONTH, mes);
+	 * nCalendario.set(Calendar.DATE, dia); nCalendario.set(Calendar.HOUR, hora);
+	 * nCalendario.set(Calendar.MINUTE, min); nCalendario.set(Calendar.SECOND, seg);
+	 * this.dbRecordatorio.put(tituloRecordatorio, null); }
+	 */
 
 }
