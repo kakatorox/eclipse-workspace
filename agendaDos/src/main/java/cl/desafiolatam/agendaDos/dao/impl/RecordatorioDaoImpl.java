@@ -14,7 +14,7 @@ public class RecordatorioDaoImpl implements RecordatorioDao {
 		try {
 			Archivos misArchivos = new Archivos();
 			Map<Calendar, TreeMap> archivos = misArchivos.getDbRecordatorios();
-			archivos.put(recordatorio.getCalendario(), recordatorio.getNota());
+			archivos.put(recordatorio.getFechaEnAgenda(), recordatorio.getNota());
 			misArchivos.setDbRecordatorios(archivos);
 			respuesta ="Creado";
 
