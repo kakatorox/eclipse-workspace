@@ -1,7 +1,6 @@
-package cl.desafiolatam.pokemon.dao.impl;
+package cl.desafiolatam.pokemonKAKATO.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.desafiolatam.pokemon.dao.PokemonDao;
-import cl.desafiolatam.pokemon.model.Pokemon;
+import cl.desafiolatam.pokemonKAKATO.dao.PokemonDao;
+import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 import oracle.jdbc.driver.OracleDriver;
 
 
@@ -23,7 +22,7 @@ public class PokemonDaoImpl implements PokemonDao{
 		 	
 	        try {
 				DriverManager.registerDriver(new OracleDriver());
-				connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orclkr","ashketchup","1234");
+				connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","pokemon","1234");
 				
 				stmt = connection.createStatement();
 				
@@ -36,7 +35,7 @@ public class PokemonDaoImpl implements PokemonDao{
 				
 				 while (rSet.next()) {
 					pokemon = new Pokemon();
-					pokemon.setPokedex(Integer.parseInt(rSet.getString("ID")));
+					pokemon.setPokedex(Integer.parseInt(rSet.getString("pokedex")));
 					pokemon.setNombre(rSet.getString("NOMBRE"));
 					pokemon.setTipo1(rSet.getString("TIPO1"));
 					pokemon.setTipo2(rSet.getString("TIPO2"));
@@ -71,7 +70,7 @@ public class PokemonDaoImpl implements PokemonDao{
 			
 			 try {
 					DriverManager.registerDriver(new OracleDriver());
-					connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orclkr","ashketchup","1234");
+					connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","pokemon","1234");
 					
 					stmt = connection.createStatement();
 					
@@ -79,8 +78,8 @@ public class PokemonDaoImpl implements PokemonDao{
 						System.out.println("Statement Creado");
 					}
 					
-					ResultSet rSet = stmt.executeQuery("Insert into ASHKETCHUP.POKEMONES (ID,NOMBRE,TIPO1,TIPO2) "
-														+ "values ("+pokedexNum+",'"+nombre+"','"+tipo1+"','"+tipo2+"');");
+					ResultSet rSet = stmt.executeQuery("Insert into pokemon.POKEMONES (pokedex,NOMBRE,TIPO1,TIPO2) "
+														+ "values ("+pokedexNum+",'"+nombre+"','"+tipo1+"','"+tipo2+"')");
 					
 					rSet.close();
 									
@@ -108,7 +107,7 @@ public class PokemonDaoImpl implements PokemonDao{
 		// TODO Auto-generated method stub
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orclkr","ashketchup","1234");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","pokemon","1234");
 			
 			stmt = connection.createStatement();
 			
@@ -118,17 +117,17 @@ public class PokemonDaoImpl implements PokemonDao{
 			
 			if (!nombre.equals(null)) {
 				
-				ResultSet rSet = stmt.executeQuery("UPDATE POST SET TITULO  ='"+nombre+"' WHERE ID ="+pokedexNum+";");
+				ResultSet rSet = stmt.executeQuery("UPDATE pokemon.POKEMONES SET NOMBRE  ='"+nombre+"' WHERE pokedex ="+pokedexNum);
 				rSet.close();
 			}
 			if (!nombre.equals(null)) {
 				
-				ResultSet rSet = stmt.executeQuery("UPDATE POST SET TITULO  ='"+tipo1+"' WHERE ID ="+pokedexNum+";");
+				ResultSet rSet = stmt.executeQuery("UPDATE pokemon.POKEMONES SET TIPO1  ='"+tipo1+"' WHERE pokedex ="+pokedexNum);
 				rSet.close();
 			}
 			if (!nombre.equals(null)) {
 	
-				ResultSet rSet = stmt.executeQuery("UPDATE POST SET TITULO  ='"+tipo2+"' WHERE ID ="+pokedexNum+";");
+				ResultSet rSet = stmt.executeQuery("UPDATE pokemon.POKEMONES SET TIPO2  ='"+tipo2+"' WHERE pokedex ="+pokedexNum);
 				rSet.close();
 			}
 			
@@ -159,7 +158,7 @@ public class PokemonDaoImpl implements PokemonDao{
 		// TODO Auto-generated method stub
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orclkr","ashketchup","1234");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","pokemon","1234");
 			
 			stmt = connection.createStatement();
 			
@@ -167,7 +166,7 @@ public class PokemonDaoImpl implements PokemonDao{
 				System.out.println("Statement Creado");
 			}
 			
-			ResultSet rSet = stmt.executeQuery("DELETE FROM pokemones  WHERE id="+pokedexNum+");");
+			ResultSet rSet = stmt.executeQuery("DELETE FROM pokemon.POKEMONES  WHERE pokedex="+pokedexNum);
 			
 			rSet.close();
 							

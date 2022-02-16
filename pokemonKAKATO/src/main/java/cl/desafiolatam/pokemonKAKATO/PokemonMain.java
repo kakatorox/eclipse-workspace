@@ -1,11 +1,11 @@
-package cl.desafiolatam.pokemon;
+package cl.desafiolatam.pokemonKAKATO;
 
 import java.util.List;
 import java.util.Scanner;
 
-import cl.desafiolatam.pokemon.model.Pokemon;
-import cl.desafiolatam.pokemon.service.PokemonService;
-import cl.desafiolatam.pokemon.service.impl.PokemonServiceImpl;
+import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
+import cl.desafiolatam.pokemonKAKATO.service.PokemonService;
+import cl.desafiolatam.pokemonKAKATO.service.impl.PokemonServiceImpl;
 
 public class PokemonMain {
 

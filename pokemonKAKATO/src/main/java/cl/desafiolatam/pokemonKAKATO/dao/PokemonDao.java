@@ -1,8 +1,8 @@
-package cl.desafiolatam.pokemon.dao;
+package cl.desafiolatam.pokemonKAKATO.dao;
 
 import java.util.List;
 
-import cl.desafiolatam.pokemon.model.Pokemon;
+import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 
 public interface PokemonDao {
 	public List<Pokemon> getPokemones();

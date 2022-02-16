@@ -1,4 +1,4 @@
-package cl.desafiolatam.pokemon.model;
+package cl.desafiolatam.pokemonKAKATO.model;
 
 public class Pokemon {
 

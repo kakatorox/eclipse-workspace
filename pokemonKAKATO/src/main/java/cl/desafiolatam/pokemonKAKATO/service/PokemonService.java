@@ -1,8 +1,8 @@
-package cl.desafiolatam.pokemon.service;
+package cl.desafiolatam.pokemonKAKATO.service;
 
 import java.util.List;
 
-import cl.desafiolatam.pokemon.model.Pokemon;
+import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 
 public interface PokemonService {
 

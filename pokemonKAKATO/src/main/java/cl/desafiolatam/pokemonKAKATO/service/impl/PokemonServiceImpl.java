@@ -1,11 +1,11 @@
-package cl.desafiolatam.pokemon.service.impl;
+package cl.desafiolatam.pokemonKAKATO.service.impl;
 
 import java.util.List;
 
-import cl.desafiolatam.pokemon.dao.PokemonDao;
-import cl.desafiolatam.pokemon.dao.impl.PokemonDaoImpl;
-import cl.desafiolatam.pokemon.model.Pokemon;
-import cl.desafiolatam.pokemon.service.PokemonService;
+import cl.desafiolatam.pokemonKAKATO.dao.PokemonDao;
+import cl.desafiolatam.pokemonKAKATO.dao.impl.PokemonDaoImpl;
+import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
+import cl.desafiolatam.pokemonKAKATO.service.PokemonService;
 
 public class PokemonServiceImpl implements PokemonService{
 
