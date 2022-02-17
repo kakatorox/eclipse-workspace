@@ -3,6 +3,7 @@ package cl.desafiolatam.pokemonKAKATO;
 import java.util.List;
 import java.util.Scanner;
 
+import cl.desafiolatam.pokemonKAKATO.model.Pokedex;
 import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 import cl.desafiolatam.pokemonKAKATO.service.PokemonService;
 import cl.desafiolatam.pokemonKAKATO.service.impl.PokemonServiceImpl;
@@ -31,13 +32,31 @@ public class PokemonMain {
 				borrarPokemon();
 				break;
 			case 5:
+				listarPokedex();
+				break;
+			case 6:				
 				System.out.println("Hasta Pronto Gatchm All!!!!!!");
-				r = false;
+				r = false;				
 				break;
 			default:
 				System.out.println("Ingrese una opcion Correcta");
 				break;
 			}
+		}
+	}
+
+	private static void listarPokedex() {
+		PokemonService pokemonService = new PokemonServiceImpl(null);
+		List<Pokedex> listaPokedex = pokemonService.getPokedex();
+		for (Pokedex pokedex : listaPokedex) {
+			System.out.println("| ID =" + pokedex.getIdPokedex() + " | " 
+									 	+ pokedex.getId_Pokemon() + " | "
+									 	+ pokedex.getDate() + " | " 
+									 	+ pokedex.getLugar() + " | "
+									 	+ pokedex.getHuevo() + " | "
+									 	+ pokedex.getPeso() + " | "
+									 	+ pokedex.getEstatura() + " | "
+									 	+ " |");
 		}
 	}
 
@@ -219,15 +238,16 @@ public class PokemonMain {
 			System.out.println("2.- Crear un Pokemon");
 			System.out.println("3.- Editar un Pokemon");
 			System.out.println("4.- Borrar un Pokemon");
-			System.out.println("5.- Salir");
+			System.out.println("5.- Listar Pokedex");
+			System.out.println("6.- Salir");
 
 			try {
 				op = Integer.parseInt(sc.next());
-				if (op < 1 && op > 5) {
+				if (op < 1 && op > 6) {
 					break;
 				}
 			} catch (NumberFormatException e) {
-				System.out.println("Sólo se aceptan números del 1 al 5");
+				System.out.println("Sólo se aceptan números del 1 al 6");
 				sc = new Scanner(System.in);
 			}
 		}

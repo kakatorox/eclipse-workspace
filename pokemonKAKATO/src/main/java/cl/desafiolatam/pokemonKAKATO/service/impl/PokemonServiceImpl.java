@@ -4,6 +4,7 @@ import java.util.List;
 
 import cl.desafiolatam.pokemonKAKATO.dao.PokemonDao;
 import cl.desafiolatam.pokemonKAKATO.dao.impl.PokemonDaoImpl;
+import cl.desafiolatam.pokemonKAKATO.model.Pokedex;
 import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 import cl.desafiolatam.pokemonKAKATO.service.PokemonService;
 
@@ -38,6 +39,12 @@ public class PokemonServiceImpl implements PokemonService{
 	public void borrarPokemon(int pokedexNum) {
 		// TODO Auto-generated method stub
 		pokemonDao.borrarPokemon(pokedexNum);
+	}
+
+	@Override
+	public List<Pokedex> getPokedex() {
+		// TODO Auto-generated method stub
+		return pokemonDao.getPokedex();
 	}
 	
 }

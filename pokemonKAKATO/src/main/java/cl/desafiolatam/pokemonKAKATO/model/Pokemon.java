@@ -29,7 +29,5 @@ public class Pokemon {
 	}
 	public void setTipo2(String tipo2) {
 		this.tipo2 = tipo2;
-	}
-	
-	
+	}	
 }

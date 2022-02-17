@@ -8,6 +8,7 @@ import java.util.List;
 
 import cl.desafiolatam.pokemonKAKATO.conexion.Conexion;
 import cl.desafiolatam.pokemonKAKATO.dao.PokemonDao;
+import cl.desafiolatam.pokemonKAKATO.model.Pokedex;
 import cl.desafiolatam.pokemonKAKATO.model.Pokemon;
 
 public class PokemonDaoImpl extends Conexion implements PokemonDao {
@@ -55,7 +56,31 @@ public class PokemonDaoImpl extends Conexion implements PokemonDao {
 		}
 		return listaPokemon;
 	}
-
+	@Override
+	public List<Pokedex> getPokedex() {
+		Pokedex pokedex = null;
+		ResultSet rSet = null;
+		List<Pokedex> listaPokedex = null;
+		try {
+			rSet = conectar().executeQuery("select * from pokedex");
+			listaPokedex =new ArrayList<Pokedex>();
+			while (rSet.next()) {
+				pokedex = new Pokedex();
+				pokedex.setIdPokedex(rSet.getInt("ID"));
+				pokedex.setId_Pokemon(rSet.getInt("ID_POKEMON"));
+				pokedex.setDate(rSet.getDate("FECHA_CAPTURA"));
+				pokedex.setLugar(rSet.getString("LUGAR"));
+				pokedex.setHuevo(rSet.getString("HUEVO"));
+				pokedex.setPeso(rSet.getFloat("PESO"));
+				pokedex.setEstatura(rSet.getFloat("ESTATURA"));
+				listaPokedex.add(pokedex);
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return listaPokedex;
+	}
 	@Override
 	public void crearPokemon(int pokedexNum, String nombre, String tipo1, String tipo2) {
 		
@@ -160,5 +185,7 @@ public class PokemonDaoImpl extends Conexion implements PokemonDao {
 			}
 		}
 	}
+
+
 
 }
