@@ -8,7 +8,7 @@ public interface PokemonService {
 
 	public List<Pokemon> getPokemones();
 	public void crearPokemon(int pokedexNum, String nombre, String tipo1, String tipo2);
-	public void updatePokemon(int pokedexNum, String nombre, String tipo1, String tipo2);
+	public void updatePokemon(int pokedexNum, String nombre, String tipo1, String tipo2,int pokedexNumActualizar);
 	public void borrarPokemon(int pokedexNum);
 
 }

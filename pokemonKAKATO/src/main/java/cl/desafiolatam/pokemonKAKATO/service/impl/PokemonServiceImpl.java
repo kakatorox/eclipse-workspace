@@ -29,9 +29,9 @@ public class PokemonServiceImpl implements PokemonService{
 	}
 
 	@Override
-	public void updatePokemon(int pokedexNum, String nombre, String tipo1, String tipo2) {
+	public void updatePokemon(int pokedexNum, String nombre, String tipo1, String tipo2,int pokedexNumActualizar) {
 		// TODO Auto-generated method stub
-		pokemonDao.updatePokemon(pokedexNum, nombre, tipo1, tipo2);
+		pokemonDao.updatePokemon(pokedexNum, nombre, tipo1, tipo2, pokedexNumActualizar);
 	}
 
 	@Override

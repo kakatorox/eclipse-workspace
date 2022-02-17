@@ -9,21 +9,29 @@ import oracle.jdbc.driver.OracleDriver;
 
 public class Conexion {
 	
-	public Connection connection = null;
+	protected Connection conexion;
 	
-	public Conexion(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
+	public Connection crearConexion(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
+			conexion = DriverManager.getConnection("jdbc:oracle:thin:@"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return conexion;
+	}
+
+	public void cerrarConexion() throws SQLException {		
+		if (conexion != null) {			
+				if (!conexion.isClosed()) {
+					conexion.close();
+				}
+			} 		
 	}
 
 	public Statement createStatement() {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
