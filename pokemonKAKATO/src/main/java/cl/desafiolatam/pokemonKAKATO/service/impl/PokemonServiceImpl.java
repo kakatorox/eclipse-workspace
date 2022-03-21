@@ -12,7 +12,7 @@ public class PokemonServiceImpl implements PokemonService{
 
 	PokemonDao pokemonDao = null;
 
-	public PokemonServiceImpl(PokemonDao pokemonDao) {
+	public PokemonServiceImpl() {
 		super();
 		this.pokemonDao = new PokemonDaoImpl();
 	}

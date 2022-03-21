@@ -1,0 +1,48 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>srvIngresoValores</servlet-name>
+  	<servlet-class>cl.desafiolatam.srvmvn.IngresoValores</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>srvLogin</servlet-name>
+  	<servlet-class>cl.desafiolatam.srvmvn.Login</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>srvIntentoLogeo</servlet-name>
+  	<servlet-class>cl.desafiolatam.srvmvn.Login</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>srvLogout</servlet-name>
+  	<servlet-class>cl.desafiolatam.srvmvn.Login</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>srvLogout</servlet-name>
+  	<url-pattern>/srvLogout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>srvIntentoLogeo</servlet-name>
+  	<url-pattern>/srvIntentoLogeo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>srvLogin</servlet-name>
+  	<url-pattern>/srvLogin</url-pattern>
+  </servlet-mapping>
+    
+  <servlet-mapping>
+  	<servlet-name>srvIngresoValores</servlet-name>
+  	<url-pattern>/srvIngresoValores</url-pattern>
+  </servlet-mapping>
+    
+</web-app>
+

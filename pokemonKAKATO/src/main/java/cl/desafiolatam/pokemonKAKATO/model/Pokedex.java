@@ -25,8 +25,7 @@ public class Pokedex {
 	}
 	public void setId_Pokemon(int id_Pokemon) {
 		this.id_Pokemon = id_Pokemon;
-	}
-		
+	}		
 	public String getLugar() {
 		return lugar;
 	}

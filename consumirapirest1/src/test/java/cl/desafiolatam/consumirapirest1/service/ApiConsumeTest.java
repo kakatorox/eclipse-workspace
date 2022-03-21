@@ -3,7 +3,6 @@ package cl.desafiolatam.consumirapirest1.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -41,6 +40,7 @@ public class ApiConsumeTest {
 	void evaluarObjetoPortTest() {
 		logger.info("obtenerListaPostTest");
 		responseObject = apiConsume.getPostResponseObject();
+		@SuppressWarnings("unchecked")
 		List<Post> liPost = (List<Post>) responseObject.getBody();
 		
 		assertEquals("Post",liPost.get(0).getClass().getSimpleName());
@@ -58,6 +58,7 @@ public class ApiConsumeTest {
 	void obtenerListaPostFiltro2Test() {
 		logger.info("obtenerListaPostTest");
 		responseObject = apiConsume.getPostResponseObject();
+		@SuppressWarnings("unchecked")
 		List<Post> liPost = (List<Post>) responseObject.getBody();
 		assertTrue(liPost.size() == 0);
 		

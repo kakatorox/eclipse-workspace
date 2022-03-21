@@ -1,0 +1,38 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+	  <servlet-name>srvLogin</servlet-name>
+	  <servlet-class>cl.desafiolatam.srvLogin.servlets.ServletInit</servlet-class>
+  </servlet>
+  
+  <servlet>
+	  <servlet-name>srvPrincipal</servlet-name>
+	  <servlet-class>cl.desafiolatam.srvLogin.servlets.ServletInit</servlet-class>
+  </servlet>
+  
+  <servlet>
+	  <servlet-name>srvLogOut</servlet-name>
+	  <servlet-class>cl.desafiolatam.srvLogin.servlets.ServletInit</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>srvLogin</servlet-name>
+  	<url-pattern>/srvLogin.srv</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>srvPrincipal</servlet-name>
+  	<url-pattern>/srvPrincipal.srv</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  	<servlet-name>srvLogOut</servlet-name>
+  	<url-pattern>/srvLogOut.srv</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
