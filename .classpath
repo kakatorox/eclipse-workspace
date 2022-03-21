@@ -39,4 +39,5 @@
 	<classpathentry kind="src" path="UML/src"/>
 	<classpathentry kind="lib" path="PolimorfismoAbstraccion/MainProductos.jar"/>
 	<classpathentry kind="output" path="Array/bin"/>
+	<classpathentry kind="output" path="CodigoDesdeUml2/CodigoDesdeUml2/bin"/>
 </classpath>
