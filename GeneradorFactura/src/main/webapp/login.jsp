@@ -6,9 +6,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
 
-<fmt:setLocale value = "en_US"/>
+<fmt:setLocale value = "${idioma}"/>
 <fmt:setBundle basename="messages" var = "lang"/>
-<html lang="">
+<html lang="${idiomaSeleccionado}">
 
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -32,7 +32,7 @@
 <body>
 
 <div class="float-right">
-	<select id="language" name="language" class="form-select" >
+	<select id="language" name="language" class="form-select" method="get">
 						<option value="es_US">es_US</option>
 						<option value="pt_BR">pr_BR</option>
 						<option value="en_US">en_US</option>
