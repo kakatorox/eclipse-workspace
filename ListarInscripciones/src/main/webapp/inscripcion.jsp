@@ -36,13 +36,13 @@
 
 
 <div class="container">
-	<form action="/srvPosIns" method="post">
+	<form action="/ListarInscripciones/srvPosIns" method="get">
 		  <div class="form-group">
 		    <label for="nombre">Nombre:</label>
 		    <input type="text" class="form-control" id="nombre">
 		  </div>
 		  <div class="form-group">
-		    <label for="telefono">Telefono:</label>
+		    <label for="celular">Celular:</label>
 		    <input type="text" class="form-control" id="telefono">
 		  </div>
 		  <div class="form-group">

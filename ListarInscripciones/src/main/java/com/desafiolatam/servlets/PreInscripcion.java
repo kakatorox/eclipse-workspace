@@ -14,7 +14,7 @@ import com.desafiolatam.entidades.FormaDePagoDTO;
 import com.desafiolatam.facade.Facade;
 
 
-public class PreInscripcion extends ServletService {
+public class PreInscripcion extends HttpServlet{
 	/**
 	 * 
 	 */
@@ -26,7 +26,7 @@ public class PreInscripcion extends ServletService {
 		super.init();
 	}
 	
-	protected void PreIns(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		//obtenemos el facade
 		Facade facade = new Facade();
 		try {

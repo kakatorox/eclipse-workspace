@@ -19,6 +19,6 @@ protected void doGet(HttpServletRequest request ,HttpServletResponse response)
 		   								   throws ServletException
                                           ,IOException
    {
-      request.getRequestDispatcher("confirmacion.jsp").forward(request, response);
+      request.getRequestDispatcher("/confirmacion.jsp").forward(request, response);
    }
 }

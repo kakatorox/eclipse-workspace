@@ -12,18 +12,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.desafiolatam.entidades.InscripcionDTO;
 import com.desafiolatam.facade.Facade;
 
-public class PosInscripcion extends ServletService 
+public class PosInscripcion extends HttpServlet 
 {
    /**
 	 * 
 	 */
 	private static final long serialVersionUID = -1557782014765652237L;
+	
+	
+	
 	@Override
-	protected void srvPosIns(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
+public void init() throws ServletException {
+	// TODO Auto-generated method stub
+	super.init();
+	System.out.println("entro");
+}
+
+
+
+	@Override
+	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
    {
       // obtengo los datos del formulario
       String nombre = request.getParameter("nombre");
-      String celular = request.getParameter("telefono");
+      String celular = request.getParameter("celular");
       int idCurso = Integer.parseInt(request.getParameter("idCurso"));
       int idFormaDePago = Integer.parseInt(request.getParameter("idFormaPago"));
        // instancio el DTO y le asigno los datos
@@ -47,20 +59,6 @@ public class PosInscripcion extends ServletService
       
        // redirecciono el control hacia la siguiente vista,
        // es decir: hacia su servlet de pre-confirmacion
-      request.getRequestDispatcher("/confirmacion.jsp").forward(request, response);
+      request.getRequestDispatcher("/srvPreCon").forward(request, response);
    }
-
-@Override
-protected void PreIns(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-	
-}
-
-
-
-@Override
-protected void PreCon(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-	
-}
 }
