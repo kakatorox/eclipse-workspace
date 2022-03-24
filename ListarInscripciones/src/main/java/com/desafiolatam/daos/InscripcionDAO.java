@@ -1,7 +1,6 @@
 package com.desafiolatam.daos;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.desafiolatam.conexion.Conexion;
-import com.desafiolatam.entidades.CursoDTO;
 import com.desafiolatam.entidades.InscripcionDTO;
-import com.desafiolatam.entidades.FormaDePagoDTO;
 
 public class InscripcionDAO extends Conexion{
 	public int insertarInscripcion(InscripcionDTO dto) throws SQLException, ClassNotFoundException {
@@ -52,18 +49,19 @@ public class InscripcionDAO extends Conexion{
 		return max;
 	}
 	
-public List obtieneInscripciones() throws SQLException, ClassNotFoundException {
+	public List<InscripcionDTO> obtieneInscripciones() throws SQLException, ClassNotFoundException {
 		
 		//creamos la lista de objetos que devolveran los resultados
 		List<InscripcionDTO> inscripciones = new ArrayList<InscripcionDTO>();
 		
 		//creamos la consulta a la base de datos
 		String consultaSql = " SELECT * " 
-				   		   + " FROM DESAFIO.inscripcion ";
-		
+				   		   + " FROM DESAFIO.inscripcion order by ID_INSCRIPCION ASC ";
+
 		//conexion a la base de datos y ejecucion de la sentencia
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM","chotokan");
+		//Class.forName("oracle.jdbc.driver.OracleDriver");
+		//Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM","chotokan");
+		Connection conexion = crearConexion("localhost", "1521", "orcl", "desafio", "1234"); 
 		
 		try(PreparedStatement stmt = conexion.prepareStatement(consultaSql)){
 	

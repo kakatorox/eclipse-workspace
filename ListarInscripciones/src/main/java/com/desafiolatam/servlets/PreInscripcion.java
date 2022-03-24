@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.desafiolatam.entidades.CursoDTO;
 import com.desafiolatam.entidades.FormaDePagoDTO;
-import com.desafiolatam.facade.Facade;
+import com.desafiolatam.facade.impl.FacadeImpl;
 
 
 public class PreInscripcion extends HttpServlet{
@@ -19,16 +19,17 @@ public class PreInscripcion extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = -8943487508675173140L;
-	
+	private FacadeImpl facade;
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
+		facade = new FacadeImpl();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		//obtenemos el facade
-		Facade facade = new Facade();
+		
 		try {
 			//obtenemos las listas
 			List<CursoDTO> listaCursos = null;

@@ -1,11 +1,9 @@
 package com.desafiolatam.daos;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class CursoDao extends Conexion{
 	
 	
 
-	public List obtieneCursos() throws SQLException, ClassNotFoundException {
+	public List<CursoDTO> obtieneCursos() throws SQLException, ClassNotFoundException {
 		
 		//creamos la lista de objetos que devolveran los resultados
 		List<CursoDTO> listaDeCursos = new ArrayList<CursoDTO>();

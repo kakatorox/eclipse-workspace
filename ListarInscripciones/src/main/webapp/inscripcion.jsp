@@ -28,9 +28,8 @@
       <a class="navbar-brand" href="#">Mantenedor De Cursos</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="preInscripcion">Inscribir Cursos</a></li>
-    </ul>
+		<li><a href="srvPreIns">Inscribir Cursos</a></li>
+	</ul>
   </div>
 </nav>
 
@@ -39,11 +38,11 @@
 	<form action="/ListarInscripciones/srvPosIns" method="get">
 		  <div class="form-group">
 		    <label for="nombre">Nombre:</label>
-		    <input type="text" class="form-control" id="nombre">
+		    <input name="nombre" type="text" class="form-control" id="nombre">
 		  </div>
 		  <div class="form-group">
 		    <label for="celular">Celular:</label>
-		    <input type="text" class="form-control" id="telefono">
+		    <input name="celular" type="number" class="form-control" id="telefono">
 		  </div>
 		  <div class="form-group">
 		    <label for="cursos">Cursos:</label>

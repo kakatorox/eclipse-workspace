@@ -16,6 +16,14 @@
   	<servlet-name>srvPosIns</servlet-name>
   	<servlet-class>com.desafiolatam.servlets.PosInscripcion</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PreListarInscripciones</servlet-name>
+  	<servlet-class>com.desafiolatam.servlets.PreListarInscripciones</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PreListarInscripciones</servlet-name>
+  	<url-pattern>/PreListarInscripciones</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>srvPosIns</servlet-name>
   	<url-pattern>/srvPosIns</url-pattern>

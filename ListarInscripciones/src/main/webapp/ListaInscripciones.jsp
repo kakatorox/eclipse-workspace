@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.desafiolatam.entidades.CursoDTO" %>
 <%@ page import="com.desafiolatam.entidades.FormaDePagoDTO" %>
 <%@ page import="com.desafiolatam.entidades.InscripcionDTO" %>
@@ -27,8 +27,7 @@
       <a class="navbar-brand" href="#">Mantenedor de Cursos</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="preInscripcion">Inscribir Cursos</a></li>
+      <li><a href="srvPreIns">Inscribir Cursos</a></li>
     </ul>
   </div>
 </nav>
@@ -37,7 +36,7 @@
 <div class="container">
   <h2>Listado de inscripciones</h2>
   <p>Listado de inscripciones</p>            
-  <table class="table">
+  <table class="table table-hover col-6" data-search="true">
     <thead>
       <tr>
         <th>Id Inscripcion</th>
