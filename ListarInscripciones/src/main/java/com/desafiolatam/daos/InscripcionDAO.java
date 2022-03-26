@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.desafiolatam.conexion.Conexion;
+import com.desafiolatam.conexion.AdministrarConexion;
 import com.desafiolatam.entidades.InscripcionDTO;
 
-public class InscripcionDAO extends Conexion{
+public class InscripcionDAO extends AdministrarConexion{
 	public int insertarInscripcion(InscripcionDTO dto) throws SQLException, ClassNotFoundException {
 		int max = 0;
 		//Query para obtener una secuencia y asignar un id. La funcion MAX solo obtiene el valor de id_inscripcion

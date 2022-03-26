@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import oracle.jdbc.driver.*;
 
-public class Conexion {
+public class AdministrarConexion {
 //	se debe agregar esto en el pom.xml
 //	 <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
 //			<dependency>

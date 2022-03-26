@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.desafiolatam.conexion.Conexion;
+import com.desafiolatam.conexion.AdministrarConexion;
 import com.desafiolatam.entidades.FormaDePagoDTO;
 
-public class FormaDePagoDAO extends Conexion{
+public class FormaDePagoDAO extends AdministrarConexion{
 	
 	public List<FormaDePagoDTO> obtieneFormasDePago() throws SQLException, ClassNotFoundException {
 		
