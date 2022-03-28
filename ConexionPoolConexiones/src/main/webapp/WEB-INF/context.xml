@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+	<Resource name="jdbc/ConexionOracle"
+   auth="Container"
+   type="oracle.jdbc.pool.OracleDataSource"
+   driverClassName="oracle.jdbc.driver.OracleDriver"
+   factory="oracle.jdbc.pool.OracleDataSourceFactory"
+   url="jdbc:oracle:thin:@localhost:1521:ORCL"
+   user="schema"
+   password="pass"
+   maxActive="20"
+   maxIdle="10"
+   maxWait="-1" />
+   <Resource name="jdbc/ConexionMySQL" auth="Container" type="javax.sql.DataSource"
+        maxActive="20" maxIdle="10" maxWait="5000"
+        username="usuarioBD" password="passwordBD" driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/tuBaseDeDatos"/>
+</context>

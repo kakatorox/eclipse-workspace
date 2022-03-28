@@ -1,4 +1,4 @@
-package cl.desafiolatam.desafiorelop1.conexion;
+package cl.desafiolatam.ProductosLimpieza.conexion;
 
 import java.awt.image.DataBuffer;
 import java.sql.Connection;
@@ -11,6 +11,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import org.postgresql.Driver;
 
 import oracle.jdbc.driver.*;
 import oracle.jdbc.pool.OracleDataSource;
@@ -27,11 +29,8 @@ public class AdministrarConexion {
 	private static Context initContext;
 	private static Connection conexion = null;
 	
-	public Connection crearConexion(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
+	public Connection crearConexionOracle(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
 		try {
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			//Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","desafio","1234");
-			
 			DriverManager.registerDriver(new OracleDriver());
 			conexion = DriverManager.getConnection("jdbc:oracle:thin:@"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
 		} catch (SQLException e) {
@@ -39,7 +38,21 @@ public class AdministrarConexion {
 		}
 		return conexion;
 	}
-	
+	public Connection crearConexionPostgres(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
+		try {
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","desafio","1234");
+			DriverManager.registerDriver(new Driver());
+			//connection = DriverManager.getConnection("", "postgres", "dev123qwe");
+			conexion = DriverManager.getConnection("jdbc:postgresql://"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
+		
+			
+			//conexion = DriverManager.getConnection("jdbc:oracle:thin:@"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conexion;
+	}
 	public static Connection generaPoolConexion() throws NamingException, SQLException {
 			
 		initContext = new InitialContext();

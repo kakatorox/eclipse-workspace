@@ -15,15 +15,17 @@ import cl.desafiolatam.desafiorelop1.dao.ConsultasBDDao;
 import cl.desafiolatam.desafiorelop1.dto.UsuarioDto;
 import cl.desafiolatam.desafiorelop1.model.Usuario;
 
-public class ConsultasBDDaoImpl extends AdministrarConexion implements ConsultasBDDao {
+public class ConsultasBDDaoImpl implements ConsultasBDDao {
 
 	@Override
 	public List<Usuario> getUsers() {
 		// TODO Auto-generated method stub
-		//Connection conexion = crearConexion("localhost", "1521", "orcl", "desrelop1", "1234");
+		//Connection conexion = crearConexionOracle("localhost", "1521", "orcl", "desrelop1", "1234"); 
+		//Connection conexion = crearConexionPostgres("localhost", "5432", "orcl", "productos_limpieza", "1234");
 		Connection conexion = null;
+		
 		try {
-			conexion = generaPoolConexion();
+			conexion = AdministrarConexion.generaPoolConexion();
 		} catch (NamingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -58,7 +60,7 @@ public class ConsultasBDDaoImpl extends AdministrarConexion implements Consultas
 
 			try {
 				rSet.close();
-				this.cerrarConexion();	
+				AdministrarConexion.closeConnection();	
 				conexion.close();
 				if (conexion.isClosed()) {
 					System.out.println("conn cerrada");
