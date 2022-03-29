@@ -23,7 +23,7 @@ import cl.desafiolatam.ProductosLimpieza.facade.CursoFacade;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.AlumnoFacadeImpl;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.CursoFacadeImpl;
 
-@WebServlet("/mantenedoralumnos.srv")
+
 public class MantenedorAlumnosServlet extends HttpServlet{
 
 	/**

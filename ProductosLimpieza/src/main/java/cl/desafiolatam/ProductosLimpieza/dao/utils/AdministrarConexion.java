@@ -1,4 +1,4 @@
-package cl.desafiolatam.ProductosLimpieza.conexion;
+package cl.desafiolatam.ProductosLimpieza.dao.utils;
 
 import java.awt.image.DataBuffer;
 import java.sql.Connection;
@@ -26,6 +26,11 @@ public class AdministrarConexion {
 //				<artifactId>ojdbc8</artifactId>
 //				<version>19.10.0.0</version>
 //			</dependency>
+		//	<dependency>
+			//	<groupId>org.postgresql</groupId>
+			//	<artifactId>postgresql</artifactId>
+			//	<version>42.2.10</version>
+		//	</dependency>
 	private static Context initContext;
 	private static Connection conexion = null;
 	
@@ -40,23 +45,17 @@ public class AdministrarConexion {
 	}
 	public Connection crearConexionPostgres(String equipo,String puerto,String bbdd,String usuario,String contrasenia) {
 		try {
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			//Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","desafio","1234");
 			DriverManager.registerDriver(new Driver());
-			//connection = DriverManager.getConnection("", "postgres", "dev123qwe");
 			conexion = DriverManager.getConnection("jdbc:postgresql://"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
-		
-			
-			//conexion = DriverManager.getConnection("jdbc:oracle:thin:@"+equipo+":"+puerto+":"+bbdd,usuario,contrasenia);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return conexion;
 	}
-	public static Connection generaPoolConexion() throws NamingException, SQLException {
+	public static Connection generaPoolConexionOracle() throws NamingException, SQLException {
 			
 		initContext = new InitialContext();
-		OracleDataSource ods= (OracleDataSource) initContext.lookup("java:/comp/env/jdbc/ConexionOracle");
+		OracleDataSource ods= (OracleDataSource) initContext.lookup("java:/comp/env/jdbc/OraConnProdLimp");
 		conexion = ods.getConnection();
 		return conexion;	
 	}
@@ -64,7 +63,7 @@ public class AdministrarConexion {
 	public static Connection generaPoolConexionPostGres() throws NamingException, SQLException {
 		
 		initContext = new InitialContext();
-	    DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/PGConnProdLimpieza");
+	    DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/PGConnProdLimp");
 	    conexion = ds.getConnection();
 		return conexion;
 	}
