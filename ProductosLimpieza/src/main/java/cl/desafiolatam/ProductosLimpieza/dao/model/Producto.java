@@ -8,7 +8,7 @@ public class Producto {
 	private String nombreProducto;
 	private int precioProducto;
 	private String descripcionProducto;
-	private List<Categoria> listaCategoria;
+	private Categoria categoria;
 	public int getIdProducto() {
 		return idProducto;
 	}
@@ -33,12 +33,14 @@ public class Producto {
 	public void setDescripcionProducto(String descripcionProducto) {
 		this.descripcionProducto = descripcionProducto;
 	}
-	public List<Categoria> getListaCategoria() {
-		return listaCategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	public void setListaCategoria(List<Categoria> listaCategoria) {
-		this.listaCategoria = listaCategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
+	
+	
 	
 	
 	

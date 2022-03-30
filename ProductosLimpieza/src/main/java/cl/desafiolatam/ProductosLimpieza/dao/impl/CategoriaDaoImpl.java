@@ -5,46 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.naming.NamingException;
 
-import cl.desafiolatam.ProductosLimpieza.dao.ProductoDao;
+import cl.desafiolatam.ProductosLimpieza.dao.CategoriaDao;
 import cl.desafiolatam.ProductosLimpieza.dao.model.Categoria;
-import cl.desafiolatam.ProductosLimpieza.dao.model.Producto;
 import cl.desafiolatam.ProductosLimpieza.dao.utils.AdministrarConexion;
 
-public class ProductoDaoImpl implements ProductoDao{
+public class CategoriaDaoImpl implements CategoriaDao{
 
 	@Override
-	public List<Producto> getAllProductos() {
-		List<Producto> listaProductos = null; 
+	public List<Categoria> getAllCategorias() {
+		List<Categoria> listaCategoria = null; 
 		Connection cn = null;
-	              
 		try {
 			cn = AdministrarConexion.generaPoolConexionOracle();
-			String consultaSql = "SELECT * FROM PRODUCTO p, CATEGORIA C"
-					+ " WHERE p.ID_CATEGORIA = c.ID_CATEGORIA";
+			String consultaSql = "select * from Categoria";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
 			ResultSet rSet = stmt.executeQuery();
-			listaProductos = new ArrayList<Producto>();
+
+//			Statement st = cn.createStatement();
+//			ResultSet rset = st.executeQuery("SELECT a.id_alumno, a.nombre, a.apellido, a.fecha_nac, a.curso_id, c.descripcion\r\n"
+//					+ "	FROM dbo.alumno a, dbo.curso c where a.curso_id = c.id_curso");
+			listaCategoria = new ArrayList<Categoria>();
 			while(rSet.next()) {
 				Categoria categoria = new Categoria();
-				Producto producto = new Producto();
-											
 				
-				producto.setIdProducto(rSet.getInt("ID_producto"));
-				producto.setNombreProducto(rSet.getString("nombre_producto"));
-				producto.setPrecioProducto(rSet.getInt("precio_producto"));
-				producto.setDescripcionProducto(rSet.getString("DESCRIPCION_producto"));
-				
-				categoria.setId_categoria(rSet.getInt("ID_CATEGORIA"));
+				categoria.setId_categoria(rSet.getInt("id_categoria"));
 				categoria.setNombre_categoria(rSet.getString("nombre_categoria"));
-
-				producto.setCategoria(categoria);	
+				listaCategoria.add(categoria);
 				
-				listaProductos.add(producto);				
 			}
 			rSet.close();
 		} catch (NamingException e) {
@@ -61,20 +52,51 @@ public class ProductoDaoImpl implements ProductoDao{
 				e.printStackTrace();
 			}
 		}		
-		return listaProductos;
+		return listaCategoria;
 	}
 	
-	@Override 
-	public int deleteProducto(int idProd) {
+	@Override
+	public int deleteCategoria(int idCat) {
 		Connection cn = null;
 		int resultado=0;
 		try {
 			cn = AdministrarConexion.generaPoolConexionOracle();
-			String consultaSql = "DELETE FROM PRODUCTO WHERE ID_PRODUCTO = ?";
-			
+			String consultaSql = "DELETE FROM CATEGORIA WHERE ID_CATEGORIA = ?";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setInt(1, idProd);
+			stmt.setInt(1, idCat);
 			
+			if(stmt.executeUpdate()==1) {
+				resultado=1;
+			}
+			
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				AdministrarConexion.closeConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}				
+		
+		return resultado;
+	}
+	
+	@Override
+	public int updateCategoria(int idCat, String nombreCat) {
+		Connection cn = null;
+		int resultado=0;
+		try {
+			cn = AdministrarConexion.generaPoolConexionOracle();
+			String consultaSql = "UPDATE CATEGORIA SET NOMBRE_CATEGORIA= ? WHERE ID_CATEGORIA = ?";
+			PreparedStatement stmt = cn.prepareStatement(consultaSql);
+			stmt.setString(1, nombreCat);
+			stmt.setInt(2, idCat);
 			
 			if(stmt.executeUpdate()==1) {
 				resultado=1;
@@ -92,26 +114,22 @@ public class ProductoDaoImpl implements ProductoDao{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}			
-		return resultado;
+		}	
+		return resultado;		
 	}
 	
 	@Override
-	public int createProducto(String nomProd, int precioProd, String desProd, int idCat) {
+	public int createCategoria(int idCat, String nombreCat) {
+		
 		Connection cn = null;
 		int resultado=0;
 		try {
 			cn = AdministrarConexion.generaPoolConexionOracle();
-			String consultaSql = "INSERT INTO PRODUCTOS_LIMPIEZA.PRODUCTO\r\n"
-					+ "(NOMBRE_PRODUCTO, PRECIO_PRODUCTO, DESCRIPCION_PRODUCTO, ID_CATEGORIA) "
-					+ "VALUES (?,?,?,?)";
-			
+			String consultaSql = "INSERT INTO PRODUCTOS_LIMPIEZA.CATEGORIA\r\n"
+					+ "(ID_CATEGORIA, NOMBRE_CATEGORIA) VALUES (?, ?)";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setString(1, nomProd);
-			stmt.setInt(2, precioProd);
-			stmt.setString(3, desProd);
-			stmt.setInt(4, idCat);
-			
+			stmt.setInt(1, idCat);
+			stmt.setString(2, nombreCat);
 			if(stmt.executeUpdate()==1) {
 				resultado=1;
 			}
@@ -130,45 +148,8 @@ public class ProductoDaoImpl implements ProductoDao{
 			}
 		}	
 		
+		
 		return resultado;
 	}
 	
-	@Override
-	public int updateProducto(int idProducto, String nomProd, int precioProd, String desProd, int idCat) {
-		Connection cn = null;
-		int resultado=0;
-		try {
-			cn = AdministrarConexion.generaPoolConexionOracle();
-			String consultaSql = "UPDATE PRODUCTO SET NOMBRE_PRODUCTO=?,"
-								+ " PRECIO_PRODUCTO=?,"
-								+ " DESCRIPCION_PRODUCTO=?, "
-								+ " ID_CATEGORIA=?"
-								+ "	WHERE ID_PRODUCTO = ?";
-			
-			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setString(1, nomProd);
-			stmt.setInt(2, precioProd);
-			stmt.setString(3, desProd);
-			stmt.setInt(4, idCat);
-			stmt.setInt(5, idProducto);
-			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				AdministrarConexion.closeConnection();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}	
-		return resultado;	
-	}
 }
