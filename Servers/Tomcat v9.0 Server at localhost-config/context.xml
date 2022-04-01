@@ -60,4 +60,14 @@
         password="1234" 
         driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://localhost:5432/productos_limpieza"/>
+    <Resource name="jdbc/PGConnSchoolSystem" 
+    	auth="Container" 
+    	type="javax.sql.DataSource"
+        maxActive="20" 
+        maxIdle="10" 
+        maxWait="5000"
+        username="postgres" 
+        password="admin" 
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost:5432/SCHOOLSYSTEM"/>
 </Context>

@@ -74,11 +74,7 @@ public class ProductoDaoImpl implements ProductoDao{
 			
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
 			stmt.setInt(1, idProd);
-			
-			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,9 +108,7 @@ public class ProductoDaoImpl implements ProductoDao{
 			stmt.setString(3, desProd);
 			stmt.setInt(4, idCat);
 			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,9 +146,7 @@ public class ProductoDaoImpl implements ProductoDao{
 			stmt.setInt(4, idCat);
 			stmt.setInt(5, idProducto);
 			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

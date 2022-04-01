@@ -64,10 +64,7 @@ public class CategoriaDaoImpl implements CategoriaDao{
 			String consultaSql = "DELETE FROM CATEGORIA WHERE ID_CATEGORIA = ?";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
 			stmt.setInt(1, idCat);
-			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 			
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -97,10 +94,7 @@ public class CategoriaDaoImpl implements CategoriaDao{
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
 			stmt.setString(1, nombreCat);
 			stmt.setInt(2, idCat);
-			
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,9 +124,7 @@ public class CategoriaDaoImpl implements CategoriaDao{
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
 			stmt.setInt(1, idCat);
 			stmt.setString(2, nombreCat);
-			if(stmt.executeUpdate()==1) {
-				resultado=1;
-			}
+			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
