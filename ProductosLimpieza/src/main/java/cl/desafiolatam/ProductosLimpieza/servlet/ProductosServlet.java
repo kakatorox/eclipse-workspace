@@ -41,7 +41,34 @@ public class ProductosServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+//		//super.doPut(req, resp);
+//		AlumnoDto alumnoDto = new AlumnoDto();
+//		String json = Utils.getJsonString(req.getInputStream());
+//		String dataSplit[] = json.split("&");
+//		String accion = dataSplit[5].split("=")[1];
+//		PrintWriter out = resp.getWriter();
+//		
+//		if (accion.equalsIgnoreCase("actualizarAlumno")) {
+//			alumnoDto.alumnoFromJson(json);
+//			alumnoDto = this.alumnoFacade.updateAlumno(alumnoDto);
+//		}else if(accion.equalsIgnoreCase("eliminarAlumno")) {
+//			alumnoDto.alumnoFromJson(json);
+//			alumnoDto = this.alumnoFacade.deleteAlumno(alumnoDto);
+//		} else if(accion.equalsIgnoreCase("crearAlumno")){
+//			alumnoDto.alumnoFromJson(json);
+//			alumnoDto = this.alumnoFacade.addAlumno(alumnoDto); 
+//		}
+//		resp.setContentType("application/json");
+//        resp.setCharacterEncoding("UTF-8");
+//        out.print(alumnoDto.toString());
+//        out.flush();
+//		
+		//req.getServletContext().getRequestDispatcher("/mantenedoralumnos.jsp").forward(req, resp);
+	}
 	
 	
 	
