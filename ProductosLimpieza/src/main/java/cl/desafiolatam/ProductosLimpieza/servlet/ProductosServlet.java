@@ -1,6 +1,7 @@
 package cl.desafiolatam.ProductosLimpieza.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import cl.desafiolatam.ProductosLimpieza.dto.CategoriaDto;
+import cl.desafiolatam.ProductosLimpieza.dto.ProductoDto;
 import cl.desafiolatam.ProductosLimpieza.facade.CategoriaFacade;
 import cl.desafiolatam.ProductosLimpieza.facade.ProductoFacade;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.CategoriaFacadeImpl;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.ProductoFacadeImpl;
+import cl.desafiolatam.ProductosLimpieza.genericUtils.Utils;
 @WebServlet("/Prod.srv")
 public class ProductosServlet extends HttpServlet{
 
@@ -22,17 +26,21 @@ public class ProductosServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -7902396055303921072L;
 	private ProductoFacade prodFacade;
+	private CategoriaFacade catFacade;
 	@Override
 	public void init() throws ServletException {
 			// TODO Auto-generated method stub
 			super.init();
 			this.prodFacade = new ProductoFacadeImpl();
+			this.catFacade = new CategoriaFacadeImpl();
 			
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub 
+		 CategoriaDto var = this.catFacade.getCategorias();
 		req.setAttribute("listaProductos",this.prodFacade.getProductos().toString());
+		req.setAttribute("categoriaDtos",(CategoriaDto)this.catFacade.getCategorias());
 		req.getServletContext().getRequestDispatcher("/tableProducto.jsp").forward(req, resp);
 	}
 
@@ -46,27 +54,26 @@ public class ProductosServlet extends HttpServlet{
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		//super.doPut(req, resp);
-//		AlumnoDto alumnoDto = new AlumnoDto();
-//		String json = Utils.getJsonString(req.getInputStream());
-//		String dataSplit[] = json.split("&");
-//		String accion = dataSplit[5].split("=")[1];
-//		PrintWriter out = resp.getWriter();
-//		
-//		if (accion.equalsIgnoreCase("actualizarAlumno")) {
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.updateAlumno(alumnoDto);
-//		}else if(accion.equalsIgnoreCase("eliminarAlumno")) {
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.deleteAlumno(alumnoDto);
-//		} else if(accion.equalsIgnoreCase("crearAlumno")){
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.addAlumno(alumnoDto); 
-//		}
-//		resp.setContentType("application/json");
-//        resp.setCharacterEncoding("UTF-8");
-//        out.print(alumnoDto.toString());
-//        out.flush();
-//		
+		ProductoDto productoDto = new ProductoDto();
+		String json = Utils.getJsonString(req.getInputStream());
+		String dataSplit[] = json.split("&");		
+		String accion = dataSplit[dataSplit.length  - 1].split("=")[1];
+		PrintWriter out = resp.getWriter();
+		
+		if (accion.equalsIgnoreCase("actualizarProducto")) {
+			productoDto.updateProductoFromJson(json);
+			productoDto = this.prodFacade.updateProducto(productoDto);
+		}else if(accion.equalsIgnoreCase("eliminarProducto")) {
+			productoDto.updateProductoFromJson(json);
+			productoDto = this.prodFacade.deleteProducto(productoDto.getProductos().get(0).getIdProducto());
+		}else if(accion.equalsIgnoreCase("crearProducto")){
+			productoDto.productoFromJson(json);
+			productoDto = this.prodFacade.createProducto(productoDto);
+		}
+		resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        out.print(productoDto.toString());
+        out.flush();
 		//req.getServletContext().getRequestDispatcher("/mantenedoralumnos.jsp").forward(req, resp);
 	}
 	

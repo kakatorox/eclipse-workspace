@@ -9,8 +9,9 @@ public interface ProductoFacade {
 
 	ProductoDto deleteProducto(int idProd);
 
-	ProductoDto updateProducto(Producto prod);
+	ProductoDto updateProducto(ProductoDto productoDto);
 
-	ProductoDto createProducto(Producto prod);
+	ProductoDto createProducto(ProductoDto productoDto);
+
 
 }

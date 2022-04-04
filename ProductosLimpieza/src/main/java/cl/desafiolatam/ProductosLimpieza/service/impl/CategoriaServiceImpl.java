@@ -16,12 +16,9 @@ public class CategoriaServiceImpl implements CategoriaService{
 	}
 	
 	@Override
-	public CategoriaDto getCategorias() {
-		
+	public CategoriaDto getCategorias() {		
 		CategoriaDto catDto = new CategoriaDto();
-		
 		catDto.setCategorias(catDao.getAllCategorias());
-		
 		return catDto;
 	}
 	
@@ -31,14 +28,18 @@ public class CategoriaServiceImpl implements CategoriaService{
 	}
 	
 	@Override
-	public int updateCat(Categoria cat) {
+	public int updateCat(CategoriaDto cat) {
 		//si se debe hacer alguna transformacion es aca
-		return catDao.updateCategoria(cat.getId_categoria(),cat.getNombre_categoria());
+		Categoria cate = new Categoria();
+		cate = cat.getCategoria().get(0);
+		return catDao.updateCategoria(cate);
 	}
 	
 	@Override
-	public int createCat(Categoria cat) {
+	public int createCat(CategoriaDto cat) {
 		//si se debe hacer alguna transformacion es aca
-		return  catDao.createCategoria(cat.getId_categoria(),cat.getNombre_categoria());
+		Categoria cate = new Categoria();
+		cate = cat.getCategoria().get(0);
+		return  catDao.createCategoria(cate.getNombre_categoria());
 	}
 }

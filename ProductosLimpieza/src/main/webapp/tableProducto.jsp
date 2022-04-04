@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ taglib prefix="x" uri="http://java.sun.com/jstl/xml" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
-
+<%@page import="cl.desafiolatam.ProductosLimpieza.dto.CategoriaDto"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,44 +27,53 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-all.min.js"></script>
+  <link rel="stylesheet"
+	href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+<script
+	src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script
+
+	src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-all.min.js"></script>
 
 <script>
-	let productosDtoJson = '<%= request.getAttribute("listaProductos")%>'	
+	let productosDtoJson = '<%= request.getAttribute("listaProductos")%>'
+	let categodiaDtoJson = '<%= request.getAttribute("categoriaDtos")%>'
 </script>
-
 <script src="assets/js/productos.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+<!-- Button trigger modal -->
+	<div class=" pt-5">
+		<button id="idBtnNuevoProd" type="button" class="btn btn-warning " data-toggle="modal" data-target="#modalNuevoProducto">Agregar Producto</button>
+	</div>
 
     <table class="table table-hover" id="tblProducto">
    	
     </table>
-<!-- Modal Crear Alumno-->
-	<div class="modal fade" id="modalNuevoProducto" tabindex="-1"
+  
+<!-- Modal Crear Producto-->
+	<div class="modal fade " id="modalNuevoProducto" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Nuevo alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Nuevo Producto</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body justify-align-center">
 					<form class="needs-validation" novalidate>
 						<div class=form-row>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtNombre">Nombre</label>
+				                    <label for="idTxtProductoNombre">Nombre Producto</label>
 				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtNombre" placeholder="Ingrese Nombre" required>
+				                        <input type="text" class="form-control" id="idTxtProductoNombre" placeholder="Ingrese Producto" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -79,9 +85,9 @@
 				            </div>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtApellido">Apellido</label>
+				                    <label for="idTxtProductoPrecio">Precio Producto</label>
 				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtApellido" placeholder="Ingrese Apellido" required>
+				                        <input type="number" class="form-control" id="idTxtProductoPrecio" placeholder="Ingrese Precio" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -93,9 +99,9 @@
 				            </div>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtFecNacimiento">F. Nacimiento</label>
+				                    <label for="idTxtProductoDescripcion">Descripcion Producto</label>
 				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtFecNacimiento" placeholder="Ingrese Fecha Nacimiento" required>
+				                        <input type="text" class="form-control" id="idTxtProductoDescripcion" placeholder="Ingrese Descripcion" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -106,58 +112,57 @@
 				                </div>
 				            </div>
 				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
+				          <div class="form-row">
+				            <div class="col-md-5 mb-5">
 				                <div class="form-group">
-				                    <label for="idSelCurso">Curso</label>
-				                    <select class="form-control" id="idSelCurso">
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
+				                    <label for="idSelCat">Curso</label>
+				                    <select class="form-control" id="idSelCat">
+				                    	<option value="-1">-Seleccione Categoria-</option>
+
 				                    </select>
 				                    <div class="valid-feedback">
                         					Correcto!
                     					</div>
 					                    <div class="invalid-feedback">
 					                        Debe ingresar un curso válido
-					                    </div>
+					                	</div>
+					                </div>
 				                </div>
 				            </div>
-				         </div>
 			    	</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id="idBtnGuardarCurso">Guardar</button>
+					<button type="button" class="btn btn-primary" id="idBtnGuardarProducto">Guardar</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- Modal Editar Alumno-->
+	<!-- Modal Editar Categoria-->
 	<div class="modal fade" id="modalEditarProducto" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Editar alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Editar Producto</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body justify-align-center">
 					<form class="needs-validation" novalidate>
 						<div class=form-row>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtEditarNombre">Nombre</label>
+				                <input type="text" class="d-none form-control" id="idTxtEditarId" required>
+				                        
+				                    <label for="idTxtProductoEditNombre">Nombre Producto</label>
 				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtEditarNombre" required>
-				                        <input type="text" class="d-none form-control" id="idTxtEditarId" required>
+				                        <input type="text" class="form-control" id="idTxtProductoEditNombre" placeholder="Ingrese Producto" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -169,9 +174,9 @@
 				            </div>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtEditarApellido">Apellido</label>
+				                    <label for="idTxtProductoEditPrecio">Precio Producto</label>
 				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtEditarApellido" placeholder="Ingrese Apellido" required>
+				                        <input type="number" class="form-control" id="idTxtProductoEditPrecio" placeholder="Ingrese Precio" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -183,9 +188,9 @@
 				            </div>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtEditarFecNacimiento">F. Nacimiento</label>
+				                    <label for="idTxtProductoEditDescripcion">Descripcion Producto</label>
 				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtEditarFecNacimiento" placeholder="Ingrese Fecha Nacimiento" required>
+				                        <input type="text" class="form-control" id="idTxtProductoEditDescripcion" placeholder="Ingrese Descripcion" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -196,44 +201,42 @@
 				                </div>
 				            </div>
 				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
+				          <div class="form-row">
+				            <div class="col-md-5 mb-5">
 				                <div class="form-group">
-				                    <label for="idSelEditarCurso">Curso</label>
-				                    <select class="form-control" id="idSelEditarCurso">
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
+				                    <label for="idSelEditaeCat">Curso</label>
+				                    <select class="form-control" id="idSelEditaeCat">
+				                    	<option value="-1">-Seleccione Categoria-</option>
+
 				                    </select>
 				                    <div class="valid-feedback">
                         					Correcto!
                     					</div>
 					                    <div class="invalid-feedback">
 					                        Debe ingresar un curso válido
-					                    </div>
+					                	</div>
+					                </div>
 				                </div>
 				            </div>
-				         </div>
 			    	</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id=idBtnEditarAlumno>Enviar</button>
+					<button type="button" class="btn btn-primary" id=idBtnEditarProducto>Actualizar</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Modal Eliminar Alumno-->
+	<!-- Modal Eliminar Producto-->
 	<div class="modal fade" id="modalEliminarProducto" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Eliminar alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Producto</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -244,10 +247,8 @@
 						<div class=form-row>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtEditarNombre">Nombre</label>
 				                    <div class="form-inline">
-				                        <input type="text" class=" form-control" id="idTxtEliminarNombre" disabled >
-				                        <input type="text" class="d-none form-control" id="idTxtEliminarId" disabled >
+				                         <input type="text" class="d-none form-control" id="idTxtEliminarId" disabled >
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -256,54 +257,7 @@
 					                    </div>
 				                    </div>
 				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarApellido">Apellido</label>
-				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtEliminarApellido" placeholder="Ingrese Apellido" disabled >
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un apellido válido
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarFecNacimiento">F. Nacimiento</label>
-				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtEliminarFecNacimiento" placeholder="Ingrese Fecha Nacimiento" disabled >
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar una fecha válida
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idSelEditarCurso">Curso</label>
-				                    <select class="form-control" id="idSelEliminarCurso" disabled >
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
-				                    </select>
-				                    <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un curso válido
-					                    </div>
-				                </div>
-				            </div>				            
+				            </div>			            
 				         </div>	
 				         <div class="form-check justify-align-center">
 							  <input class="form-check-input" type="radio" name="flexRadioDefault" id="idRadioEliminar">
@@ -316,7 +270,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id=idBtnEliminarAlumno>Eliminar</button>
+					<button type="button" class="btn btn-primary" id=idBtnEliminarProducto>Eliminar</button>
 				</div>
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import cl.desafiolatam.ProductosLimpieza.facade.CategoriaFacade;
 import cl.desafiolatam.ProductosLimpieza.service.CategoriaService;
 import cl.desafiolatam.ProductosLimpieza.service.impl.CategoriaServiceImpl;
 
+
 public class CategoriaFacadeImpl implements CategoriaFacade{
 		
 	private CategoriaService catService;
@@ -23,10 +24,9 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 	@Override
 	public CategoriaDto deleteCategoria(int idCat) {
 	
-		CategoriaDto catDto = new CategoriaDto();
-		
 		int res =  catService.deleteCat(idCat);
-		
+		CategoriaDto catDto = this.catService.getCategorias();
+	
 		if(res == 1) {
 			catDto.setMensaje("Categoria Borrada");			
 		}else if (res == 0) {
@@ -39,11 +39,11 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 	}
 	
 	@Override
-	public CategoriaDto updateCategoria(Categoria cat) {
-		
-		CategoriaDto catDto = new CategoriaDto();
-		
+	public CategoriaDto updateCategoria(CategoriaDto cat) {
 		int res =  catService.updateCat(cat);
+		CategoriaDto catDto = this.catService.getCategorias();
+		
+		
 		
 		if(res == 1) {
 			catDto.setMensaje("Categoria Actualizada");			
@@ -57,11 +57,9 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 	}
 	
 	@Override
-	public CategoriaDto createCategoria(Categoria cat) {
-		
-		CategoriaDto catDto = new CategoriaDto();
-		
+	public CategoriaDto createCategoria(CategoriaDto cat) {
 		int res =  catService.createCat(cat);
+		CategoriaDto catDto = this.catService.getCategorias();
 		
 		if(res == 1) {
 			catDto.setMensaje("Categoria Creada");			
@@ -69,9 +67,9 @@ public class CategoriaFacadeImpl implements CategoriaFacade{
 			catDto.setMensaje("Categoria No Creada");
 		}else {
 			catDto.setMensaje("No Realizo Nada falla");
-		}
-		
+		}		
 		return catDto;
 	}
+
 
 }

@@ -11,14 +11,4 @@
       maxActive="20"
       maxIdle="10"
       maxWait="-1" />
-    <Resource name="jdbc/PGConnProdLimp" 
-    	auth="Container" 
-    	type="javax.sql.DataSource"
-        maxActive="20" 
-        maxIdle="10" 
-        maxWait="5000"
-        username="UserProdLimp" 
-        password="1234" 
-        driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost:5432/productos_limpieza"/>
 </context>

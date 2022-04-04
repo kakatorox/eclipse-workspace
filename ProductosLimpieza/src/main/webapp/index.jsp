@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html lang="es">
 
 <head>
@@ -43,9 +44,19 @@
 	  <button type="button" class="btn btn-danger" id="idTablaCategorias">Categorias</button>	
   </div>
 </nav>
-
+	
+			<form action="/ProductosLimpieza/srvLogout" method="get">
+				<button type="submit" class="btn btn-danger ">Cerrar Session</button>
+			</form>
+		
+	
+	<div class="m-3">
+		<div class="alert alert-success" role="alert">
+ 			Bienvenido <c:out value="${usuarioConectado}"></c:out>
+		</div>
+	</div>
 	<div id="idContenido" class="container">
-        Pagina de inicio
+      
     </div>
 
 </body>

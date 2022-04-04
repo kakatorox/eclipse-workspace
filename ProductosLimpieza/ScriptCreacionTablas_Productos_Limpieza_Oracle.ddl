@@ -65,7 +65,31 @@ BEGIN
 end;
 /
 
+CREATE TABLE users (
+    id            INTEGER NOT NULL,
+    nombreusuario VARCHAR2(50 CHAR),
+    password      VARCHAR2(50 CHAR)
+)
+LOGGING;
 
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( id );
+/
+
+CREATE SEQUENCE USERS_id_SEQ 
+START WITH 1 
+INCREMENT BY   1
+    NOCACHE 
+    ORDER ;
+
+CREATE OR REPLACE TRIGGER USERS_id_TRG 
+BEFORE INSERT ON USERS 
+FOR EACH ROW 
+WHEN (NEW.id IS NULL) 
+BEGIN
+:new.id := users_id_seq.nextval;
+
+end;
+/
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 

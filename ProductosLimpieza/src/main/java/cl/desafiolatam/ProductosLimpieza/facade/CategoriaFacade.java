@@ -7,10 +7,11 @@ public interface CategoriaFacade {
 
 	CategoriaDto getCategorias();
 
-	CategoriaDto updateCategoria(Categoria cat);
+	CategoriaDto updateCategoria(CategoriaDto categoriaDto);
 
-	CategoriaDto createCategoria(Categoria cat);
+	CategoriaDto createCategoria(CategoriaDto cat);
 
 	CategoriaDto deleteCategoria(int idCat);
+
 
 }

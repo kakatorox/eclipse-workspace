@@ -9,8 +9,8 @@ public interface CategoriaService {
 
 	int deleteCat(int idCat);
 
-	int updateCat(Categoria cat);
+	int updateCat(CategoriaDto cat);
 
-	int createCat(Categoria cat);
+	int createCat(CategoriaDto cat);
 
 }

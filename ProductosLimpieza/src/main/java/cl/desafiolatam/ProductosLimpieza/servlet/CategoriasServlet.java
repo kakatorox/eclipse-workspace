@@ -1,6 +1,7 @@
 package cl.desafiolatam.ProductosLimpieza.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import cl.desafiolatam.ProductosLimpieza.dto.CategoriaDto;
 import cl.desafiolatam.ProductosLimpieza.facade.CategoriaFacade;
 import cl.desafiolatam.ProductosLimpieza.facade.ProductoFacade;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.CategoriaFacadeImpl;
 import cl.desafiolatam.ProductosLimpieza.facade.impl.ProductoFacadeImpl;
+import cl.desafiolatam.ProductosLimpieza.genericUtils.Utils;
 @WebServlet("/Cat.srv")
 public class CategoriasServlet extends HttpServlet{
 
@@ -45,27 +48,28 @@ public class CategoriasServlet extends HttpServlet{
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		//super.doPut(req, resp);
-//		AlumnoDto alumnoDto = new AlumnoDto();
-//		String json = Utils.getJsonString(req.getInputStream());
-//		String dataSplit[] = json.split("&");
-//		String accion = dataSplit[5].split("=")[1];
-//		PrintWriter out = resp.getWriter();
-//		
-//		if (accion.equalsIgnoreCase("actualizarAlumno")) {
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.updateAlumno(alumnoDto);
-//		}else if(accion.equalsIgnoreCase("eliminarAlumno")) {
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.deleteAlumno(alumnoDto);
-//		} else if(accion.equalsIgnoreCase("crearAlumno")){
-//			alumnoDto.alumnoFromJson(json);
-//			alumnoDto = this.alumnoFacade.addAlumno(alumnoDto); 
-//		}
-//		resp.setContentType("application/json");
-//        resp.setCharacterEncoding("UTF-8");
-//        out.print(alumnoDto.toString());
-//        out.flush();
+		//super.doPut(req, resp);
+
+		CategoriaDto categoriaDto = new CategoriaDto();
+		String json = Utils.getJsonString(req.getInputStream());
+		String dataSplit[] = json.split("&");		
+		String accion = dataSplit[dataSplit.length  - 1].split("=")[1];
+		PrintWriter out = resp.getWriter();
+		
+		if (accion.equalsIgnoreCase("actualizarCategoria")) {
+			categoriaDto.updateCategoriaFromJson(json);
+			categoriaDto = this.catFacade.updateCategoria(categoriaDto);
+		}else if(accion.equalsIgnoreCase("eliminarCategoria")) {
+			categoriaDto.updateCategoriaFromJson(json);
+			categoriaDto = this.catFacade.deleteCategoria(categoriaDto.getCategoria().get(0).getId_categoria());
+		} else if(accion.equalsIgnoreCase("crearCategoria")){
+			categoriaDto.categoriaFromJson(json);
+			categoriaDto = this.catFacade.createCategoria(categoriaDto);
+		}
+		resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        out.print(categoriaDto.toString());
+        out.flush();
 		
 		//req.getServletContext().getRequestDispatcher("/mantenedoralumnos.jsp").forward(req, resp);
 	}

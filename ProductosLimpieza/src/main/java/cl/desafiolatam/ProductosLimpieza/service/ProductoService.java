@@ -9,8 +9,9 @@ public interface ProductoService {
 
 	int deleteProd(int idProd);
 
-	int updateProd(Producto prod);
+	int updateProd(ProductoDto prod);
 
-	int createProd(Producto prod);
+	int createProd(ProductoDto prod);
+
 
 }

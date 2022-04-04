@@ -30,10 +30,13 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-all.min.js"></script>
+	<link rel="stylesheet"
+		href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+	<script
+		src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+	<script
 
+	src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-all.min.js"></script>
 <script>
 	let categoriasDtoJson = '<%= request.getAttribute("listaCategorias")%>'	
 </script>
@@ -42,31 +45,36 @@
 </head>
 
 <body>
-
+<!-- Button trigger modal -->
+	<div class=" pt-5">
+		<button type="button" class="btn btn-warning " data-toggle="modal" data-target="#modalNuevoCategoria">Agregar Categoria</button>
+	</div>
+	
     <table class="table table-hover" id="tblCategoria">
    	
     </table>
-<!-- Modal Crear Alumno-->
-	<div class="modal fade" id="modalNuevoCategoria" tabindex="-1"
+    
+<!-- Modal Crear Categoria-->
+	<div class="modal fade " id="modalNuevoCategoria" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Nuevo alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Nueva Categoria</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body justify-align-center">
 					<form class="needs-validation" novalidate>
 						<div class=form-row>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtNombre">Nombre</label>
+				                    <label for="idTxtNombreCategoria">Nombre Categoria</label>
 				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtNombre" placeholder="Ingrese Nombre" required>
+				                        <input type="text" class="form-control" id="idTxtNombreCategoria" placeholder="Ingrese Categoria" required>
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -76,73 +84,26 @@
 				                    </div>
 				                </div>
 				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtApellido">Apellido</label>
-				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtApellido" placeholder="Ingrese Apellido" required>
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un apellido válido
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtFecNacimiento">F. Nacimiento</label>
-				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtFecNacimiento" placeholder="Ingrese Fecha Nacimiento" required>
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar una fecha válida
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idSelCurso">Curso</label>
-				                    <select class="form-control" id="idSelCurso">
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
-				                    </select>
-				                    <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un curso válido
-					                    </div>
-				                </div>
-				            </div>
 				         </div>
 			    	</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id="idBtnGuardarCurso">Guardar</button>
+					<button type="button" class="btn btn-primary" id="idBtnGuardarCategoria">Guardar</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- Modal Editar Alumno-->
+	<!-- Modal Editar Categoria-->
 	<div class="modal fade" id="modalEditarCategoria" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Editar alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Editar Categoria</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -166,73 +127,26 @@
 				                    </div>
 				                </div>
 				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarApellido">Apellido</label>
-				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtEditarApellido" placeholder="Ingrese Apellido" required>
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un apellido válido
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarFecNacimiento">F. Nacimiento</label>
-				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtEditarFecNacimiento" placeholder="Ingrese Fecha Nacimiento" required>
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar una fecha válida
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idSelEditarCurso">Curso</label>
-				                    <select class="form-control" id="idSelEditarCurso">
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
-				                    </select>
-				                    <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un curso válido
-					                    </div>
-				                </div>
-				            </div>
 				         </div>
 			    	</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id=idBtnEditarAlumno>Enviar</button>
+					<button type="button" class="btn btn-primary" id=idBtnEditarCategoria>Enviar</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Modal Eliminar Alumno-->
+	<!-- Modal Eliminar Categoria-->
 	<div class="modal fade" id="modalEliminarCategoria" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Eliminar alumno</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Categoria</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -243,10 +157,8 @@
 						<div class=form-row>
 				            <div class="col-md-4 mb-3">
 				                <div class="form-group">
-				                    <label for="idTxtEditarNombre">Nombre</label>
 				                    <div class="form-inline">
-				                        <input type="text" class=" form-control" id="idTxtEliminarNombre" disabled >
-				                        <input type="text" class="d-none form-control" id="idTxtEliminarId" disabled >
+				                         <input type="text" class="d-none form-control" id="idTxtEliminarId" disabled >
 				                        <div class="valid-feedback">
                         					Correcto!
                     					</div>
@@ -255,54 +167,7 @@
 					                    </div>
 				                    </div>
 				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarApellido">Apellido</label>
-				                    <div class="form-inline">
-				                        <input type="text" class="form-control" id="idTxtEliminarApellido" placeholder="Ingrese Apellido" disabled >
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un apellido válido
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idTxtEditarFecNacimiento">F. Nacimiento</label>
-				                    <div class="form-inline">
-				                        <input type="date" class="form-control" id="idTxtEliminarFecNacimiento" placeholder="Ingrese Fecha Nacimiento" disabled >
-				                        <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar una fecha válida
-					                    </div>
-				                    </div>
-				                </div>
-				            </div>
-				         </div>
-				         <div class="form-row">
-				            <div class="col-md-4 mb-3">
-				                <div class="form-group">
-				                    <label for="idSelEditarCurso">Curso</label>
-				                    <select class="form-control" id="idSelEliminarCurso" disabled >
-				                    	<option value="-1">-Seleccione Curso-</option>
-				                    	<c:forEach var="curso" items="${cursoDto.cursos}">
-				                    		<option value="<c:out value='${curso.idCurso}' />"><c:out value="${curso.descripcion}" /> </option>
-				                    	</c:forEach>
-				                    </select>
-				                    <div class="valid-feedback">
-                        					Correcto!
-                    					</div>
-					                    <div class="invalid-feedback">
-					                        Debe ingresar un curso válido
-					                    </div>
-				                </div>
-				            </div>				            
+				            </div>			            
 				         </div>	
 				         <div class="form-check justify-align-center">
 							  <input class="form-check-input" type="radio" name="flexRadioDefault" id="idRadioEliminar">
@@ -315,7 +180,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-primary" id=idBtnEliminarAlumno>Eliminar</button>
+					<button type="button" class="btn btn-primary" id=idBtnEliminarCategoria>Eliminar</button>
 				</div>
 			</div>
 		</div>

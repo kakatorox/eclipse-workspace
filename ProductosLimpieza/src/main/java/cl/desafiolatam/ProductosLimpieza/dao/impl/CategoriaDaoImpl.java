@@ -85,15 +85,15 @@ public class CategoriaDaoImpl implements CategoriaDao{
 	}
 	
 	@Override
-	public int updateCategoria(int idCat, String nombreCat) {
+	public int updateCategoria(Categoria cate) {
 		Connection cn = null;
 		int resultado=0;
 		try {
 			cn = AdministrarConexion.generaPoolConexionOracle();
 			String consultaSql = "UPDATE CATEGORIA SET NOMBRE_CATEGORIA= ? WHERE ID_CATEGORIA = ?";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setString(1, nombreCat);
-			stmt.setInt(2, idCat);
+			stmt.setString(1, cate.getNombre_categoria());
+			stmt.setInt(2, cate.getId_categoria());
 			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -113,17 +113,16 @@ public class CategoriaDaoImpl implements CategoriaDao{
 	}
 	
 	@Override
-	public int createCategoria(int idCat, String nombreCat) {
+	public int createCategoria(String nombreCat) {
 		
 		Connection cn = null;
 		int resultado=0;
 		try {
 			cn = AdministrarConexion.generaPoolConexionOracle();
 			String consultaSql = "INSERT INTO PRODUCTOS_LIMPIEZA.CATEGORIA\r\n"
-					+ "(ID_CATEGORIA, NOMBRE_CATEGORIA) VALUES (?, ?)";
+					+ "( NOMBRE_CATEGORIA) VALUES ( ?)";
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setInt(1, idCat);
-			stmt.setString(2, nombreCat);
+			stmt.setString(1, nombreCat);
 			resultado=stmt.executeUpdate();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block

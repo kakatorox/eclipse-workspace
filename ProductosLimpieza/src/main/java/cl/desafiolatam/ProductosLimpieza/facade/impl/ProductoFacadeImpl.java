@@ -24,9 +24,8 @@ public class ProductoFacadeImpl implements ProductoFacade{
 	@Override
 	public ProductoDto deleteProducto(int idProd) {
 		
-		ProductoDto prodDto = new ProductoDto();
-		
 		int res =  prodService.deleteProd(idProd);
+		ProductoDto prodDto = this.prodService.getProducto();
 		
 		if(res == 1) {
 			prodDto.setMensaje("Producto Borrado");			
@@ -40,11 +39,10 @@ public class ProductoFacadeImpl implements ProductoFacade{
 	}
 	
 	@Override
-	public ProductoDto updateProducto(Producto prod) {
-		
-		ProductoDto prodDto = new ProductoDto();
+	public ProductoDto updateProducto(ProductoDto prod) {
 		
 		int res =  prodService.updateProd(prod);
+		ProductoDto prodDto = this.prodService.getProducto();
 		
 		if(res == 1) {
 			prodDto.setMensaje("Producto Actualizado");			
@@ -58,11 +56,10 @@ public class ProductoFacadeImpl implements ProductoFacade{
 	}
 	
 	@Override
-	public ProductoDto createProducto(Producto prod) {
-		
-		ProductoDto prodDto = new ProductoDto();
+	public ProductoDto createProducto(ProductoDto prod) {
 		
 		int res =  prodService.createProd(prod);
+		ProductoDto prodDto = this.prodService.getProducto();
 		
 		if(res == 1) {
 			prodDto.setMensaje("Producto Creado");			

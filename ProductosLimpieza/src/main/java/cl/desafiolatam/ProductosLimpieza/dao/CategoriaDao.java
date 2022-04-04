@@ -10,8 +10,8 @@ public interface CategoriaDao {
 
 	int deleteCategoria(int idCat);
 
-	int updateCategoria(int idCat, String nombreCat);
+	int updateCategoria(Categoria cate);
 
-	int createCategoria(int idCat, String nombreCat);
+	int createCategoria(String nombreCat);
 
 }

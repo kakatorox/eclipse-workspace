@@ -4,15 +4,17 @@ import java.util.HashSet;
 import java.util.List;
 
 import cl.desafiolatam.ProductosLimpieza.dao.model.Producto;
+import cl.desafiolatam.ProductosLimpieza.dto.ProductoDto;
 
 public interface ProductoDao {
 
 	List<Producto> getAllProductos();
 
-	int updateProducto(int idProducto, String nomProd, int precioProd, String desProd, int idCat);
-
 	int deleteProducto(int idProd);
 
-	int createProducto(String nomProd, int precioProd, String desProd, int idCat);
+	int createProducto(String nombreProducto, int precioProducto, String descripcionProducto, int id_categoria);
+
+	int updateProducto(int idProducto, String nombreProducto, int precioProducto, String descripcionProducto,
+			int id_categoria);
 
 }

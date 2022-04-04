@@ -5,13 +5,35 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>Index</servlet-name>
-  	<servlet-class>cl.desafiolatam.ProductosLimpieza.servlet.InitServlet</servlet-class>
+  	<servlet-name>srvLogin</servlet-name>
+  	<servlet-class>cl.desafiolatam.ProductosLimpieza.servlet.Login</servlet-class>
   </servlet>
+  
+  <servlet>
+  	<servlet-name>srvIntentoLogeo</servlet-name>
+  	<servlet-class>cl.desafiolatam.ProductosLimpieza.servlet.Login</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>srvLogout</servlet-name>
+  	<servlet-class>cl.desafiolatam.ProductosLimpieza.servlet.Login</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
-  	<servlet-name>Index</servlet-name>
-  	<url-pattern>/Index</url-pattern>
-  </servlet-mapping>
+  	<servlet-name>srvLogout</servlet-name>
+  	<url-pattern>/srvLogout</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet-mapping>
+  	<servlet-name>srvIntentoLogeo</servlet-name>
+  	<url-pattern>/srvIntentoLogeo</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet-mapping>
+  	<servlet-name>srvLogin</servlet-name>
+  	<url-pattern>/srvLogin</url-pattern>
+  </servlet-mapping> 
+  
   <resource-ref>
   	<description>Pool Conexiones Oracle</description>
   	<res-ref-name>jdbc/OraConnProdLimp</res-ref-name>

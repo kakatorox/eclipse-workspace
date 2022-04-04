@@ -14,6 +14,7 @@ import cl.desafiolatam.ProductosLimpieza.dao.ProductoDao;
 import cl.desafiolatam.ProductosLimpieza.dao.model.Categoria;
 import cl.desafiolatam.ProductosLimpieza.dao.model.Producto;
 import cl.desafiolatam.ProductosLimpieza.dao.utils.AdministrarConexion;
+import cl.desafiolatam.ProductosLimpieza.dto.ProductoDto;
 
 public class ProductoDaoImpl implements ProductoDao{
 
@@ -93,7 +94,7 @@ public class ProductoDaoImpl implements ProductoDao{
 	}
 	
 	@Override
-	public int createProducto(String nomProd, int precioProd, String desProd, int idCat) {
+	public int createProducto(String nombre,int precioProd, String desProd,int idCat) {
 		Connection cn = null;
 		int resultado=0;
 		try {
@@ -103,7 +104,7 @@ public class ProductoDaoImpl implements ProductoDao{
 					+ "VALUES (?,?,?,?)";
 			
 			PreparedStatement stmt = cn.prepareStatement(consultaSql);
-			stmt.setString(1, nomProd);
+			stmt.setString(1, nombre);
 			stmt.setInt(2, precioProd);
 			stmt.setString(3, desProd);
 			stmt.setInt(4, idCat);
@@ -128,7 +129,7 @@ public class ProductoDaoImpl implements ProductoDao{
 	}
 	
 	@Override
-	public int updateProducto(int idProducto, String nomProd, int precioProd, String desProd, int idCat) {
+	public int updateProducto(int idProducto,String nomProd,int precioProd, String desProd,int idCat) {
 		Connection cn = null;
 		int resultado=0;
 		try {

@@ -35,26 +35,26 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 	
 	@Override
-	public int updateProd(Producto prod) {
+	public int updateProd(ProductoDto prod) {
 		//si se debe hacer alguna transformacion es aca
-		return prodDao.updateProducto(
-										prod.getIdProducto(),
-										prod.getNombreProducto(),
-										prod.getPrecioProducto(),
-										prod.getDescripcionProducto(),
-										prod.getCategoria().getId_categoria()
-										);
+		Producto producto = new Producto();
+		producto = prod.getProductos().get(0);
+		return prodDao.updateProducto(producto.getIdProducto(),
+										producto.getNombreProducto(),
+										producto.getPrecioProducto(),
+										producto.getDescripcionProducto(),
+										producto.getCategoria().getId_categoria());
 	}
 	
 	@Override
-	public int createProd(Producto prod) {
+	public int createProd(ProductoDto prod) {
 		//si se debe hacer alguna transformacion es aca
-		return  prodDao.createProducto(
-										prod.getNombreProducto(),
-										prod.getPrecioProducto(),
-										prod.getDescripcionProducto(),
-										prod.getCategoria().getId_categoria()
-										);
+		Producto producto = new Producto();
+		producto = prod.getProductos().get(0);
+		return  prodDao.createProducto(producto.getNombreProducto(),
+										producto.getPrecioProducto(),
+										producto.getDescripcionProducto(),
+										producto.getCategoria().getId_categoria());
 	}
 	
 	
