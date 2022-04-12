@@ -25,7 +25,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>hola m,undo contact manager</h1>
 	<div class="container" style="{border:1px;}">	
 		<form:form action="/contactManager/addContact" method="POST" modelAttribute="contactoDto">
 			<div class="container m-5">

@@ -1,4 +1,4 @@
-let SelectId;
+let SelectId = 0;
 $('document').ready(function () { 
 
     var table = document.getElementById("idTableSelect");
@@ -24,7 +24,10 @@ $('#idTableSelect tbody tr').click(function() {
     $(this).addClass('bg-success').siblings().removeClass('bg-success');
 });
 function deleteRow(){
-	window.location.href = "/contactManager/deleteContact/?id=" +SelectId;
-
+	if(SelectId != 0){
+		window.location.href = "/contactManager/deleteContact/?id=" +SelectId;
+	}else{
+		alert("No a Seleccionado algun elemento");
 	}
+}
 	
