@@ -9,15 +9,15 @@ $('document').ready(function () {
             return function () {
                 var cell = row.getElementsByTagName("th")[0];
                SelectId = cell.innerHTML;
-               console.log(SelectId);
-               document.getElementById("idText").value = SelectId;
             };
         };
         currentRow.onclick = createClickHandler(currentRow);
-    }     
-    idButtonEliminar.onclick = function eliminar(SelectId){		
-		alert(SelectId);	
-	};
+    }
+    if(mensaje != ""){
+		alert(mensaje);
+    }  
+    
+      
 	
 });
 $('#idTableSelect tbody tr').click(function() {
@@ -26,6 +26,7 @@ $('#idTableSelect tbody tr').click(function() {
 function deleteRow(){
 	if(SelectId != 0){
 		window.location.href = "/contactManager/deleteContact/?id=" +SelectId;
+		
 	}else{
 		alert("No a Seleccionado algun elemento");
 	}

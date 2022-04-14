@@ -22,10 +22,13 @@
 	
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/styles.css">
+	<script type="text/javascript">
+		let mensaje = "${mensajeAccion}"; 
+	</script>
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container" style="{border:1px;}">	
+	<div class="container" style="border:1px;">	
 		<form:form action="/contactManager/addContact" method="POST" modelAttribute="contactoDto">
 			<div class="container m-5">
 				Nombre Persona: <form:input path="contacto.nombre" id="idNombre" name="nombre" cssClass="m-2"/>
@@ -55,17 +58,18 @@
 			<th>Telefono</th>
 		</tr>
 		
-		<c:if test="${listaContactoDTO.size() >0}">
-			<c:forEach var="contactoDto" items="${listaContactoDTO}">
-				<tr id="${contactoDto.getContacto().getId()}">
-				<th><c:out value="${contactoDto.getContacto().getId()}"></c:out></th>
-				<th><c:out value="${contactoDto.getContacto().getNombre()}"></c:out></th>
-				<th><c:out value="${contactoDto.getContacto().getApellidoPaterno()}"></c:out></th>
-				<th><c:out value="${contactoDto.getContacto().getApellidoMaterno()}"></c:out></th>
-				<th><c:out value="${contactoDto.getContacto().getDireccion()}"></c:out></th>
-				<th><c:out value="${contactoDto.getContacto().getTelefono()}"></c:out></th>
-				</tr>
-			</c:forEach>
+		<c:if test="${listaContactoDTO.size() > 0 && listaContactoDTO.get(0).getContacto().getId() > 0}">
+				<c:forEach var="contactoDto" items="${listaContactoDTO}">
+					<tr id="${contactoDto.getContacto().getId()}">
+					<th><c:out value="${contactoDto.getContacto().getId()}"></c:out></th>
+					<th><c:out value="${contactoDto.getContacto().getNombre()}"></c:out></th>
+					<th><c:out value="${contactoDto.getContacto().getApellidoPaterno()}"></c:out></th>
+					<th><c:out value="${contactoDto.getContacto().getApellidoMaterno()}"></c:out></th>
+					<th><c:out value="${contactoDto.getContacto().getDireccion()}"></c:out></th>
+					<th><c:out value="${contactoDto.getContacto().getTelefono()}"></c:out></th>
+					</tr>
+				</c:forEach>
+			
 		</c:if>	
 				                        
 	</table>
