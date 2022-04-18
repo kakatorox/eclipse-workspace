@@ -13,12 +13,19 @@ $('document').ready(function () {
         };
         currentRow.onclick = createClickHandler(currentRow);
     }
-    if(mensaje != ""){
-		alert(mensaje);
-    }  
     
-      
-	
+    var modal = document.getElementById("modalAlerta");
+    if(mensaje != ""){
+		if(mensaje === 'Contacto Agregado'){
+			alertify.success(mensaje); 
+		}
+		if(mensaje === 'Contacto Borrado'){
+			alertify.error(mensaje); 
+		}
+		if(mensaje === 'Ya no Hay Registros'){
+			alertify.warning(mensaje); 
+		}
+    } 	
 });
 $('#idTableSelect tbody tr').click(function() {
     $(this).addClass('bg-success').siblings().removeClass('bg-success');
