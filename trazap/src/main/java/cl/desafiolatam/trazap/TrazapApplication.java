@@ -1,5 +1,7 @@
 package cl.desafiolatam.trazap;
 
+import java.util.Iterator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,25 @@ public class TrazapApplication {
 		
 		return (args) ->{
 			Bodega bodega = new Bodega();
-			bodega.setDescripcion("Mi Bodega");
+			bodega.setDescripcion("Mi Bodega1");
+			bodega.setDescripcion("Mi Bodega2");
 			bodegaRepository.save(bodega);
 			logger.info(bodega.toString());
 		};
 	}
 
+	@Bean
+	public CommandLineRunner findAllBodega() {
+		
+		return (args) ->{
+			Bodega bodega = new Bodega();
+			bodega.setDescripcion("Mi Bodega");
+			Iterator<Bodega> itBodega = bodegaRepository.findAll().iterator();
+			while (itBodega.hasNext()) {
+				logger.info(itBodega.next().toString());
+				
+			}
+			
+		};
+	}
 }
