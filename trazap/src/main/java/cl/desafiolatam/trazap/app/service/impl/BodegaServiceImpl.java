@@ -64,4 +64,22 @@ public class BodegaServiceImpl implements BodegaService{
 				return responseServiceObject;
 	}
 
+	@Override
+	public ResponseServiceObject findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseServiceObject delete(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseServiceObject update(Bodega bodega) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
