@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
+import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
+import cl.desafiolatam.trazap.app.repository.model.TipoProducto;
 
 @SpringBootApplication
 public class TrazapApplication {
@@ -19,7 +21,8 @@ public class TrazapApplication {
 	private final static Logger logger= LoggerFactory.getLogger(TrazapApplication.class);
 	@Autowired
 	private BodegaRepository bodegaRepository;
-	
+	@Autowired
+	private TipoProductoRepository tipoProductoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(TrazapApplication.class, args);
 	}
@@ -36,6 +39,21 @@ public class TrazapApplication {
 			logger.info(bodega.toString());
 		};
 	}
+	
+	@Bean
+	public CommandLineRunner createTipoProducto() {
+		return (args) -> {
+			TipoProducto tipoProducto1 = new TipoProducto();
+			TipoProducto tipoProducto2 = new TipoProducto();
+			tipoProducto1.setDescripcion("TipoProducto 1");
+			tipoProducto2.setDescripcion("TipoProducto 2");
+			tipoProductoRepository.save(tipoProducto1);
+			tipoProductoRepository.save(tipoProducto2);
+			logger.info(tipoProducto1.toString());
+			logger.info(tipoProducto2.toString());
+		};
+	}
+	
 
 	@Bean
 	public CommandLineRunner findAllBodega() {
