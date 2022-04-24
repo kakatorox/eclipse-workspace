@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "2d345372-2627-4b44-a8eb-5ec22bcfbd0e",
+		"name": "TrazapBodegas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bodegas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bodegas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bodegas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categoriaProducto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categoriaProducto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoriaProducto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "estadoTrazabilidad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estadoTrazabilidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estadoTrazabilidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "proveedores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proveedores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proveedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tipoProducto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tipoProducto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tipoProducto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
