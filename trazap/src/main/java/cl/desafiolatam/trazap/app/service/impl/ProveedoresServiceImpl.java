@@ -1,12 +1,18 @@
 package cl.desafiolatam.trazap.app.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.desafiolatam.trazap.app.repository.ProveedoresRespository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
+import cl.desafiolatam.trazap.app.repository.model.Proveedores;
 import cl.desafiolatam.trazap.app.service.ProveedoresService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
+import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 
 @Service("proveedoresService")
@@ -18,29 +24,89 @@ public class ProveedoresServiceImpl implements ProveedoresService {
 	@Autowired
 	private ResponseServiceMessage responseServiceMessage;
 	@Override
+	public ResponseServiceObject save(Proveedores proveedores) {
+		// TODO Auto-generated method stub
+				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+			
+				responseServiceObject.setBody(proveedoresRespository.save(proveedores));
+				
+				responseServiceMessage.setTimestamp(new Date());
+				responseServiceMessage.setCode("201");
+				responseServiceMessage.setType(ResponseServiceMessageType.OK);
+				responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+				
+				messageList.add(responseServiceMessage);
+								
+				responseServiceObject.setMessageList(messageList);
+						
+				return responseServiceObject;
+	}
+
+	@Override
+	public ResponseServiceObject findById(int id) {
+		// TODO Auto-generated method stub
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		responseServiceObject.setBody(proveedoresRespository.findById(id));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
+		
+	}
+
+	@Override
+	public ResponseServiceObject delete(int id) {
+		// TODO Auto-generated method stub
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		proveedoresRespository.deleteById(id);
+		responseServiceObject.setBody("Borrado");
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
+	}
+
+	@Override
+	public ResponseServiceObject update(Bodega bodega) {
+		// TODO Auto-generated method stub
+//		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+//        bodegaRepository.;
+//		responseServiceObject.setBody("Borrado");
+//		
+//		responseServiceMessage.setTimestamp(new Date());
+//		responseServiceMessage.setCode("201");
+//		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+//		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+//		
+//		messageList.add(responseServiceMessage);
+//						
+//		responseServiceObject.setMessageList(messageList);
+//				
+//		return responseServiceObject;
+		return null;
+	}
+
+	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public ResponseServiceObject findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ResponseServiceObject save(Bodega bodega) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ResponseServiceObject delete(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ResponseServiceObject update(Bodega bodega) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
 
 }

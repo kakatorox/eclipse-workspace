@@ -10,17 +10,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import cl.desafiolatam.trazap.app.delegate.BodegaDelegate;
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
 import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.TipoProducto;
+import cl.desafiolatam.trazap.app.service.BodegaService;
 
 @SpringBootApplication
 public class TrazapApplication {
 
 	private final static Logger logger= LoggerFactory.getLogger(TrazapApplication.class);
+	
 	@Autowired
-	private BodegaRepository bodegaRepository;
+	private BodegaDelegate bodegaDelegate;
 	@Autowired
 	private TipoProductoRepository tipoProductoRepository;
 	public static void main(String[] args) {
@@ -32,11 +35,16 @@ public class TrazapApplication {
 	public CommandLineRunner createBodega() {
 		
 		return (args) ->{
-			Bodega bodega = new Bodega();
-			bodega.setDescripcion("Mi Bodega1");
-			bodega.setDescripcion("Mi Bodega2");
-			bodegaRepository.save(bodega);
-			logger.info(bodega.toString());
+			Bodega bodega1 = new Bodega();
+			Bodega bodega2 = new Bodega();
+			bodega1.setDescripcion("Mi Bodega7");
+			bodegaDelegate.save(bodega1);
+			bodega2.setDescripcion("Mi Bodega8");
+			bodegaDelegate.save(bodega2);
+			
+			//bodegaRepository.save(bodega);
+			logger.info(bodega1.toString());
+			logger.info(bodega2.toString());
 		};
 	}
 	
@@ -54,19 +62,22 @@ public class TrazapApplication {
 		};
 	}
 	
-
-	@Bean
-	public CommandLineRunner findAllBodega() {
-		
-		return (args) ->{
-			Bodega bodega = new Bodega();
-			bodega.setDescripcion("Mi Bodega");
-			Iterator<Bodega> itBodega = bodegaRepository.findAll().iterator();
-			while (itBodega.hasNext()) {
-				logger.info(itBodega.next().toString());
-				
-			}
-			
-		};
-	}
+//
+//	@Bean
+//	public CommandLineRunner findAllBodega() {
+//		
+//		return (args) ->{
+//			Bodega bodega = new Bodega();
+//			bodega.setDescripcion("Mi Bodega");
+//			//Iterator<Bodega> itBodega = bodegaDelegate.findAll().toString();
+////			while (itBodega.hasNext()) {
+////				logger.info(itBodega.next().toString());
+////				
+////			}
+//			while (bodegaDelegate.findAll()) {
+//				type type = (type) en.nextElement();
+//				
+//			}
+//		};
+//	}
 }

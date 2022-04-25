@@ -176,7 +176,7 @@ CREATE TABLE public.proveedores (
 
 CREATE TABLE public.tipo_producto (
 	id_tipo_producto serial4 NOT NULL,
-	descripcion int4 NOT NULL,
+	descripcion varchar(40) NOT NULL,
 	CONSTRAINT pktipo_producto PRIMARY KEY (id_tipo_producto)
 );
 

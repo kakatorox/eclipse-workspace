@@ -67,18 +67,59 @@ public class BodegaServiceImpl implements BodegaService{
 	@Override
 	public ResponseServiceObject findById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		responseServiceObject.setBody(bodegaRepository.findById(id));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
+		
 	}
 
 	@Override
 	public ResponseServiceObject delete(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+        bodegaRepository.deleteById(id);
+		responseServiceObject.setBody("Borrado");
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
 	}
 
 	@Override
 	public ResponseServiceObject update(Bodega bodega) {
 		// TODO Auto-generated method stub
+//		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+//        bodegaRepository.;
+//		responseServiceObject.setBody("Borrado");
+//		
+//		responseServiceMessage.setTimestamp(new Date());
+//		responseServiceMessage.setCode("201");
+//		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+//		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+//		
+//		messageList.add(responseServiceMessage);
+//						
+//		responseServiceObject.setMessageList(messageList);
+//				
+//		return responseServiceObject;
 		return null;
 	}
 
