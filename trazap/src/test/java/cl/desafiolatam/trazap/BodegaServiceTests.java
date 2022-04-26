@@ -22,6 +22,7 @@ import cl.desafiolatam.trazap.app.service.BodegaService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
+import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 
 @SpringBootTest
 public class BodegaServiceTests {
@@ -67,7 +68,7 @@ public class BodegaServiceTests {
 		
 		generateMockResponse(bodegaMock1, "201", ResponseServiceMessageType.OK,"Servicio Finalizado Correctamente");
 		
-		Bodega bodegaAux = new Bodega();
+		BodegaRequest bodegaAux = new BodegaRequest();
 		bodegaAux.setDescripcion("bodega ET");
 		
 		when(bodegaService.save(bodegaAux)).thenReturn(responseServiceObject);

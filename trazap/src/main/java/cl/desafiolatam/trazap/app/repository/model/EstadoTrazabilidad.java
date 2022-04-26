@@ -23,7 +23,7 @@ public class EstadoTrazabilidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado_trazabilidad_id_estado_trazabilidad_seq")
 	@Column(name = "id_estado_trazabilidad")
-	private int idBodega;
+	private int idEstadoTrazabilidad;
 	
 	@Column(name = "descripcion")
 	private String descripcion;

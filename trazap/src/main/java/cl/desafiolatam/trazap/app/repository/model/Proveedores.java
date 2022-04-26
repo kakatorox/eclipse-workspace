@@ -23,7 +23,7 @@ public class Proveedores {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "proveedores_id_proveedor_seq")
 	@Column(name = "id_proveedor")
-	private int idBodega;
+	private int idProveedor;
 	
 	@Column(name = "rut_proveedor")
 	private String RutProveedor;

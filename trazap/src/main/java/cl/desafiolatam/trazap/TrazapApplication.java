@@ -16,6 +16,7 @@ import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.TipoProducto;
 import cl.desafiolatam.trazap.app.service.BodegaService;
+import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 
 @SpringBootApplication
 public class TrazapApplication {
@@ -31,36 +32,36 @@ public class TrazapApplication {
 	}
 	
 	
-	@Bean
-	public CommandLineRunner createBodega() {
-		
-		return (args) ->{
-			Bodega bodega1 = new Bodega();
-			Bodega bodega2 = new Bodega();
-			bodega1.setDescripcion("Mi Bodega7");
-			bodegaDelegate.save(bodega1);
-			bodega2.setDescripcion("Mi Bodega8");
-			bodegaDelegate.save(bodega2);
-			
-			//bodegaRepository.save(bodega);
-			logger.info(bodega1.toString());
-			logger.info(bodega2.toString());
-		};
-	}
+//	@Bean
+//	public CommandLineRunner createBodega() {
+//		
+//		return (args) ->{
+//			BodegaRequest bodega1 = new BodegaRequest();
+//			BodegaRequest bodega2 = new BodegaRequest();
+//			bodega1.setDescripcion("Mi Bodega7");
+//			bodegaDelegate.save(bodega1);
+//			bodega2.setDescripcion("Mi Bodega8");
+//			bodegaDelegate.save(bodega2);
+//			
+//			//bodegaRepository.save(bodega);
+//			logger.info(bodega1.toString());
+//			logger.info(bodega2.toString());
+//		};
+//	}
 	
-	@Bean
-	public CommandLineRunner createTipoProducto() {
-		return (args) -> {
-			TipoProducto tipoProducto1 = new TipoProducto();
-			TipoProducto tipoProducto2 = new TipoProducto();
-			tipoProducto1.setDescripcion("TipoProducto 1");
-			tipoProducto2.setDescripcion("TipoProducto 2");
-			tipoProductoRepository.save(tipoProducto1);
-			tipoProductoRepository.save(tipoProducto2);
-			logger.info(tipoProducto1.toString());
-			logger.info(tipoProducto2.toString());
-		};
-	}
+//	@Bean
+//	public CommandLineRunner createTipoProducto() {
+//		return (args) -> {
+//			TipoProducto tipoProducto1 = new TipoProducto();
+//			TipoProducto tipoProducto2 = new TipoProducto();
+//			tipoProducto1.setDescripcion("TipoProducto 1");
+//			tipoProducto2.setDescripcion("TipoProducto 2");
+//			tipoProductoRepository.save(tipoProducto1);
+//			tipoProductoRepository.save(tipoProducto2);
+//			logger.info(tipoProducto1.toString());
+//			logger.info(tipoProducto2.toString());
+//		};
+//	}
 	
 //
 //	@Bean
