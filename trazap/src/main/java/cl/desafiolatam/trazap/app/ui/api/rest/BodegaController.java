@@ -41,7 +41,6 @@ public class BodegaController {
 				produces = MediaType.APPLICATION_JSON_VALUE)
 	
 	public ResponseEntity<ResponseServiceObject> getBodega(@PathVariable Integer idBodega) throws ServiceException{
-		if(true) throw new ServiceException("mensaje");
 		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.findById(idBodega), HttpStatus.OK);
 	}
 	
