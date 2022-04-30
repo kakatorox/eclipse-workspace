@@ -7,8 +7,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import cl.desafiolatam.spsecurityex.app.service.impl.AuthServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -18,12 +21,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// TODO Auto-generated method stub
 		//super.configure(auth);
-		auth.inMemoryAuthentication().withUser("kakato")
-									.password(passwordEncoder().encode("1234"))
-									.roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("peke")
-									.password(passwordEncoder().encode("1234"))
-									.roles("USER");
+//		auth.inMemoryAuthentication().withUser("kakato")
+//									.password(passwordEncoder().encode("1234"))
+//									.roles("ADMIN");
+//		auth.inMemoryAuthentication().withUser("peke")
+//									.password(passwordEncoder().encode("1234"))
+//									.roles("USER");
+		auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
 	}
 
 	@Override
@@ -65,6 +69,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Bean
 	public AuthenticationSuccessHandler customAthenticationSuccessHandler() {
 		return new CustomAthenticationSuccessHandler();
+	}
+	
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return new AuthServiceImpl();
 	}
 
 }

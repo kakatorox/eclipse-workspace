@@ -1,4 +1,4 @@
-package cl.desafiolatam.administracionbodega.conf;
+ package cl.desafiolatam.administracionbodega.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// TODO Auto-generated method stub
-		//super.configure(auth);
+		
+		
 		auth.inMemoryAuthentication().withUser("bodegon")
 									.password(passwordEncoder().encode("1234"))
 									.roles("BODEGA");

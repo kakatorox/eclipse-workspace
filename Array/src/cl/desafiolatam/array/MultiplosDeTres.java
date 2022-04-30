@@ -24,6 +24,18 @@ public class MultiplosDeTres {
 		System.out.println(vis);
 		System.out.println("    Suma :"+suma(vis).get(0));
 		System.out.println("Promedio :"+suma(vis).get(1));
+		
+		int number = 5;
+
+		int result = someFunc(number) + number;
+
+	}
+	
+
+	static int someFunc(int aNumber) {
+	  int newNumber = 5 + aNumber;
+	  number = newNumber;
+	  return newNumber;
 	}
 	
 	static ArrayList<Integer> suma(ArrayList<Integer> vis) {
@@ -40,4 +52,6 @@ public class MultiplosDeTres {
 		resultado.add(prom);
 		return resultado;
 	}
+	static void greetings() {
+				}
 }

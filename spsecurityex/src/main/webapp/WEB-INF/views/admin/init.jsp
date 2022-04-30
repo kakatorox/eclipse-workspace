@@ -8,5 +8,8 @@
 </head>
 <body>
 	se ha logeado el SUPERSAYAN (Administrador)
+	<form action="/logout" method="get">
+		<button type="submit">logout</button>
+	</form>
 </body>
 </html>

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(schema = "public", catalog = "bodega")
 @SequenceGenerator(name = "bodega_id_bodega_seq", initialValue = 1,allocationSize = 1,sequenceName = "bodega_id_bodega_seq")
 public class Bodega {
 
