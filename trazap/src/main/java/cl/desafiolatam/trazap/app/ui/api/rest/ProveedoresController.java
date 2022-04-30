@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.desafiolatam.trazap.app.delegate.ProveedoresDelegate;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+import cl.desafiolatam.trazap.app.ui.model.request.ProveedoresRequest;
 
 @RestController
 @RequestMapping("/proveedores")
@@ -24,7 +25,7 @@ public class ProveedoresController {
 	private ProveedoresDelegate proveedoresDelegate;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseServiceObject> getBodegas(){
+	public ResponseEntity<ResponseServiceObject> getProveedores(){
 		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.findAll(), HttpStatus.OK);
 	}
 
@@ -32,24 +33,24 @@ public class ProveedoresController {
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> saveBodega(@RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.save(bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> saveProveedor(@RequestBody ProveedoresRequest proveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.save(proveedoresRequest), HttpStatus.OK);
 	}
 	
 	@PutMapping(
-				path="{idBodega}",
+				path="{idProveedor}",
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> updateBodegas(@PathVariable int idBodega, @RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.save(idBodega,bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> updateProveedores(@PathVariable int idProveedor, @RequestBody ProveedoresRequest proveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.update(idProveedor,proveedoresRequest), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(
-				path = "{idBodega}",
+				path = "{idProveedor}",
 				produces = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> deleteBodegas(@PathVariable int idBodega){
-		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.delete(idBodega), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> deleteProveedor(@PathVariable int idProveedor){
+		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.delete(idProveedor), HttpStatus.OK);
 	}
 }

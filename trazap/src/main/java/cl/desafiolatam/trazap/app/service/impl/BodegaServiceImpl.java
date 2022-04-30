@@ -74,7 +74,7 @@ public class BodegaServiceImpl implements BodegaService{
 	}
 	
 	@Override
-	public ResponseServiceObject save(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(int idBodega, BodegaRequest bodegaRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		Bodega bodega = new Bodega();

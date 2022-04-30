@@ -7,6 +7,7 @@ import cl.desafiolatam.trazap.app.delegate.EstadoTrazabilidadDelegate;
 import cl.desafiolatam.trazap.app.service.EstadoTrazabilidadService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+import cl.desafiolatam.trazap.app.ui.model.request.EstadoTrazabilidadRequest;
 
 @Component("estadoTrazabilidadDelegate")
 public class EstadoTrazabilidadDelegateImpl implements EstadoTrazabilidadDelegate{
@@ -20,7 +21,7 @@ public class EstadoTrazabilidadDelegateImpl implements EstadoTrazabilidadDelegat
 	}
 
 	@Override
-	public ResponseServiceObject save(BodegaRequest bodegaRequest) {
+	public ResponseServiceObject save(EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -32,7 +33,7 @@ public class EstadoTrazabilidadDelegateImpl implements EstadoTrazabilidadDelegat
 	}
 
 	@Override
-	public ResponseServiceObject save(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(int idEstadoTrazabilidad, EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

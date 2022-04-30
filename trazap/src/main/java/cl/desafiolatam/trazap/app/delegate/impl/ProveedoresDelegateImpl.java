@@ -7,6 +7,7 @@ import cl.desafiolatam.trazap.app.delegate.ProveedoresDelegate;
 import cl.desafiolatam.trazap.app.service.ProveedoresService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+import cl.desafiolatam.trazap.app.ui.model.request.ProveedoresRequest;
 
 @Component("proveedoresDelegate")
 public class ProveedoresDelegateImpl implements ProveedoresDelegate{
@@ -19,19 +20,19 @@ public class ProveedoresDelegateImpl implements ProveedoresDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject save(BodegaRequest bodegaRequest) {
+	public ResponseServiceObject delete(int idProveedores) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseServiceObject delete(int id) {
+	public ResponseServiceObject save(ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public ResponseServiceObject save(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(int idProveedor, ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

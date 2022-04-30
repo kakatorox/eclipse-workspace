@@ -58,7 +58,7 @@ public class BodegaController {
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
 	public ResponseEntity<ResponseServiceObject> updateBodegas(@PathVariable int idBodega, @RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.save(idBodega,bodegaRequest), HttpStatus.OK);
+		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.update(idBodega,bodegaRequest), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(

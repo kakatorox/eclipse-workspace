@@ -17,6 +17,7 @@ import cl.desafiolatam.trazap.app.delegate.BodegaDelegate;
 import cl.desafiolatam.trazap.app.delegate.CategoriaProductoDelegate;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @RestController
 @RequestMapping("/categoriaProducto")
@@ -25,7 +26,7 @@ public class CategoriaProductoController {
 	private CategoriaProductoDelegate categoriaProductoDelegate;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseServiceObject> getBodegas(){
+	public ResponseEntity<ResponseServiceObject> getCategoriaProductos(){
 		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.findAll(), HttpStatus.OK);
 	}
 
@@ -33,24 +34,24 @@ public class CategoriaProductoController {
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> saveBodega(@RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.save(bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> saveCategoriaProducto(@RequestBody CategoriaProductoRequest categoriaProductoRequest){
+		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.save(categoriaProductoRequest), HttpStatus.OK);
 	}
 	
 	@PutMapping(
-				path="{idBodega}",
+				path="{idCategoriaProducto}",
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> updateBodegas(@PathVariable int idBodega, @RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.save(idBodega,bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> updateCategoriaProducto(@PathVariable int idCategoriaProducto, @RequestBody CategoriaProductoRequest categoriaProductoRequest){
+		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.update(idCategoriaProducto,categoriaProductoRequest), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(
-				path = "{idBodega}",
+				path = "{idCategoriaProducto}",
 				produces = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> deleteBodegas(@PathVariable int idBodega){
-		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.delete(idBodega), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> deleteCategoriaProducto(@PathVariable int idCategoriaProducto){
+		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.delete(idCategoriaProducto), HttpStatus.OK);
 	}
 }

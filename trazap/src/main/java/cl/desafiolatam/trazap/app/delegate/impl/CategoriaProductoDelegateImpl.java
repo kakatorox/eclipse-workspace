@@ -7,6 +7,7 @@ import cl.desafiolatam.trazap.app.delegate.CategoriaProductoDelegate;
 import cl.desafiolatam.trazap.app.service.CategoriaProductoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @Component("categoriaProductoDelegate")
 public class CategoriaProductoDelegateImpl implements CategoriaProductoDelegate{
@@ -20,7 +21,7 @@ public class CategoriaProductoDelegateImpl implements CategoriaProductoDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject save(BodegaRequest bodegaRequest) {
+	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -32,7 +33,7 @@ public class CategoriaProductoDelegateImpl implements CategoriaProductoDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject save(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

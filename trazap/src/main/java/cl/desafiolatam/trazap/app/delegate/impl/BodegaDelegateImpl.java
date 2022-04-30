@@ -29,9 +29,9 @@ public class BodegaDelegateImpl implements BodegaDelegate{
 		return bodegaService.save(bodegaRequest);
 	}
 	@Override
-	public ResponseServiceObject save(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(int idBodega, BodegaRequest bodegaRequest) {
 		// TODO Auto-generated method stub
-		return bodegaService.save(idBodega,bodegaRequest);
+		return bodegaService.update(idBodega,bodegaRequest);
 	}
 
 	@Override

@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cl.desafiolatam.trazap.app.delegate.EstadoTrazabilidadDelegate;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
-import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
+
+import cl.desafiolatam.trazap.app.ui.model.request.EstadoTrazabilidadRequest;
 
 @RestController
 @RequestMapping("/estadoTrazabilidad")
@@ -24,7 +25,7 @@ public class EstadoTrazabilidadController {
 	private EstadoTrazabilidadDelegate estadoTrazabilidadDelegate;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseServiceObject> getBodegas(){
+	public ResponseEntity<ResponseServiceObject> getEstadoTrazabilidades(){
 		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.findAll(), HttpStatus.OK);
 	}
 
@@ -32,24 +33,24 @@ public class EstadoTrazabilidadController {
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> saveBodega(@RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.save(bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> saveEstadoTrazabilidad(@RequestBody EstadoTrazabilidadRequest estadoTrazabilidadRequest){
+		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.save(estadoTrazabilidadRequest), HttpStatus.OK);
 	}
 	
 	@PutMapping(
-				path="{idBodega}",
+				path="{idEstadoTrazabilidad}",
 				produces = MediaType.APPLICATION_JSON_VALUE,
 				consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> updateBodegas(@PathVariable int idBodega, @RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.save(idBodega,bodegaRequest), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> updateEstadoTrazabilidades(@PathVariable int idEstadoTrazabilidad, @RequestBody EstadoTrazabilidadRequest estadoTrazabilidadRequest){
+		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.update(idEstadoTrazabilidad,estadoTrazabilidadRequest), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(
-				path = "{idBodega}",
+				path = "{idEstadoTrazabilidad}",
 				produces = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> deleteBodegas(@PathVariable int idBodega){
-		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.delete(idBodega), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> deleteEstadoTrazabilidad(@PathVariable int idEstadoTrazabilidad){
+		return new ResponseEntity<ResponseServiceObject>(estadoTrazabilidadDelegate.delete(idEstadoTrazabilidad), HttpStatus.OK);
 	}
 }
