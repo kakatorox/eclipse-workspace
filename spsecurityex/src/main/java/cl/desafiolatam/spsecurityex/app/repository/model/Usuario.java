@@ -1,5 +1,6 @@
 package cl.desafiolatam.spsecurityex.app.repository.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_rol")
 	private Rol rol;
 }

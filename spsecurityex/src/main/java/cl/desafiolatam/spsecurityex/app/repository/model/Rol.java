@@ -33,7 +33,7 @@ public class Rol {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_rol")
 	private List<Usuario> usuarios;
 }
