@@ -1,7 +1,6 @@
 package cl.desafiolatam.trazap.app.delegate;
 
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
-import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 import cl.desafiolatam.trazap.app.ui.model.request.EstadoTrazabilidadRequest;
 
 public interface EstadoTrazabilidadDelegate {

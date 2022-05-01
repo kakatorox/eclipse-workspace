@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import cl.desafiolatam.trazap.app.delegate.CategoriaProductoDelegate;
 import cl.desafiolatam.trazap.app.service.CategoriaProductoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
-import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @Component("categoriaProductoDelegate")

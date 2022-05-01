@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.desafiolatam.trazap.app.delegate.BodegaDelegate;
 import cl.desafiolatam.trazap.app.delegate.CategoriaProductoDelegate;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
-import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @RestController

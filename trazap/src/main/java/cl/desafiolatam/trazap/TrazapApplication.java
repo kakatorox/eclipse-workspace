@@ -75,65 +75,53 @@ public class TrazapApplication {
 //		};
 //	}
 	
-//	@Bean
-//	public CommandLineRunner createCategoriaProducto() {
-//		
-//		return (args) ->{
-//			CategoriaProductoRequest categoriaProducto = new CategoriaProductoRequest();
-//			categoriaProducto.setDescripcion("Mi CategoriaProducto 1");			
-//			categoriaProductoDelegate.save(categoriaProducto);
-//			
-//			logger.info(categoriaProducto.toString());
-//			
-//		};
-//	}
-//	@Bean
-//	public CommandLineRunner createEstadoTrazabilidad() {
-//		
-//		return (args) ->{
-//			EstadoTrazabilidadRequest estadoTrazabilidadRequest = new EstadoTrazabilidadRequest();
-//			estadoTrazabilidadRequest.setDescripcion("Mi Trazabilidad 1");
-//			estadoTrazabilidadDelegate.save(estadoTrazabilidadRequest);
-//			logger.info(estadoTrazabilidadRequest.toString());
-//			
-//		};
-//	}
-//	@Bean
-//	public CommandLineRunner createProveedores() {
-//		
-//		return (args) ->{
-//			ProveedoresRequest proveedoresRequest = new ProveedoresRequest();
-//			proveedoresRequest.setRazonSocial("Proveedor 1");
-//			proveedoresRequest.setRutProveedor("rut proveedor 1");
-//			proveedoresDelegate.save(proveedoresRequest);
-//			logger.info(proveedoresRequest.toString());
-//			
-//		};
-//	}
-//	@Bean
-//	public CommandLineRunner createTipoProducto() {
-//		
-//		return (args) ->{
-//			TipoProductoRequest tipoProductoRequest = new TipoProductoRequest();
-//			tipoProductoRequest.setDescripcion("Mi Bodega 1");
-//			tipoProductoDelegate.save(tipoProductoRequest);
-//			logger.info(tipoProductoRequest.toString());
-//			
-//		};
-//	}
-//	@Bean
-//	public CommandLineRunner createTipoProducto() {
-//		return (args) -> {
-//			TipoProducto tipoProducto1 = new TipoProducto();
-//			TipoProducto tipoProducto2 = new TipoProducto();
-//			tipoProducto1.setDescripcion("TipoProducto 1");
-//			tipoProducto2.setDescripcion("TipoProducto 2");
-//			tipoProductoRepository.save(tipoProducto1);
-//			tipoProductoRepository.save(tipoProducto2);
-//			logger.info(tipoProducto1.toString());
-//			logger.info(tipoProducto2.toString());
-//		};
-//	}
+	@Bean
+	public CommandLineRunner createCategoriaProducto() {
+		
+		return (args) ->{
+			CategoriaProductoRequest categoriaProducto = new CategoriaProductoRequest();
+			categoriaProducto.setDescripcion("Mi CategoriaProducto 1");			
+			categoriaProductoDelegate.save(categoriaProducto);
+			
+			logger.info(categoriaProducto.toString());
+			
+		};
+	}
+	@Bean
+	public CommandLineRunner createEstadoTrazabilidad() {
+		
+		return (args) ->{
+			EstadoTrazabilidadRequest estadoTrazabilidadRequest = new EstadoTrazabilidadRequest();
+			estadoTrazabilidadRequest.setDescripcion("Mi Trazabilidad 1");
+			estadoTrazabilidadDelegate.save(estadoTrazabilidadRequest);
+			logger.info(estadoTrazabilidadRequest.toString());
+			
+		};
+	}
+	@Bean
+	public CommandLineRunner createProveedores() {
+		
+		return (args) ->{
+			ProveedoresRequest proveedoresRequest = new ProveedoresRequest();
+			proveedoresRequest.setRazonSocial("Proveedor 1");
+			proveedoresRequest.setRutProveedor("15911702-2");
+			proveedoresDelegate.save(proveedoresRequest);
+			logger.info(proveedoresRequest.toString());
+			
+		};
+	}
+	@Bean
+	public CommandLineRunner createTipoProducto() {
+		
+		return (args) ->{
+			TipoProductoRequest tipoProductoRequest = new TipoProductoRequest();
+			tipoProductoRequest.setDescripcion("Mi Bodega 1");
+			tipoProductoDelegate.save(tipoProductoRequest);
+			logger.info(tipoProductoRequest.toString());
+			
+		};
+	}
+	
 	
 //
 //	@Bean

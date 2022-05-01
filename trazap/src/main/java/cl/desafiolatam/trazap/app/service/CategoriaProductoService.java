@@ -1,6 +1,5 @@
 package cl.desafiolatam.trazap.app.service;
 
-import cl.desafiolatam.trazap.app.repository.model.CategoriaProducto;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 

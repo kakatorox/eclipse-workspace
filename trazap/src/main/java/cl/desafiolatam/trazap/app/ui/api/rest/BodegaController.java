@@ -1,9 +1,5 @@
 package cl.desafiolatam.trazap.app.ui.api.rest;
 
-import java.util.NoSuchElementException;
-
-import javax.persistence.PostUpdate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cl.desafiolatam.trazap.app.delegate.BodegaDelegate;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
-import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 

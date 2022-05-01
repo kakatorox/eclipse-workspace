@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
-import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.TipoProducto;
 import cl.desafiolatam.trazap.app.service.TipoProductoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;

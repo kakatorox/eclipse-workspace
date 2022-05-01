@@ -1,6 +1,5 @@
 package cl.desafiolatam.trazap.app.service.response;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;

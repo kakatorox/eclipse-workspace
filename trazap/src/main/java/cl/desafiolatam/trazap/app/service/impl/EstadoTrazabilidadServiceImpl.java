@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.desafiolatam.trazap.app.repository.EstadoTrazabilidadRepository;
-import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.EstadoTrazabilidad;
-import cl.desafiolatam.trazap.app.service.BodegaService;
 import cl.desafiolatam.trazap.app.service.EstadoTrazabilidadService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
@@ -30,6 +28,7 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 				EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
+				estadoTrazabilidad.setDescripcion(estadoTrazabilidadRequest.getDescripcion());
 				responseServiceObject.setBody(estadoTrazabilidadRepository.save(estadoTrazabilidad));
 				
 				responseServiceMessage.setTimestamp(new Date());
