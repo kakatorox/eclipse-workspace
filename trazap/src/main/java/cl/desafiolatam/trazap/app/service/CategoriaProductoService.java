@@ -2,11 +2,12 @@ package cl.desafiolatam.trazap.app.service;
 
 import cl.desafiolatam.trazap.app.repository.model.CategoriaProducto;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
+import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 public interface CategoriaProductoService {
 	public ResponseServiceObject findAll();
-	public ResponseServiceObject findById(int id);
-	public ResponseServiceObject save(CategoriaProducto categoriaProducto);
-	public ResponseServiceObject delete(int id);
-	public ResponseServiceObject update(CategoriaProducto categoriaProducto);
+	public ResponseServiceObject findById(int idCategoriaProducto);
+	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest);
+	public ResponseServiceObject delete(int idCategoriaProducto);
+	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest);
 }

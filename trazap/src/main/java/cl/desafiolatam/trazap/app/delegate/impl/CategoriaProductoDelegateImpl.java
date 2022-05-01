@@ -17,25 +17,25 @@ public class CategoriaProductoDelegateImpl implements CategoriaProductoDelegate{
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaProductoService.findAll();
 	}
 
 	@Override
 	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaProductoService.save(categoriaProductoRequest);
 	}
 
 	@Override
-	public ResponseServiceObject delete(int id) {
+	public ResponseServiceObject delete(int idCategoriaProducto) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaProductoService.delete(idCategoriaProducto);
 	}
 
 	@Override
 	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaProductoService.update(idCategoriaProducto,categoriaProductoRequest);
 	}
 
 }

@@ -15,6 +15,7 @@ import cl.desafiolatam.trazap.app.service.CategoriaProductoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
+import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @Service("categoriaProductoService")
 public class CategoriaProductoServiceImpl implements CategoriaProductoService{
@@ -52,10 +53,11 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService{
 		return null;
 	}
 	@Override
-	public ResponseServiceObject save(CategoriaProducto categoriaProducto) {
+	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-		
+		CategoriaProducto categoriaProducto = new CategoriaProducto(); 
+		categoriaProducto.setDescripcion(categoriaProductoRequest.getDescripcion());
 		responseServiceObject.setBody(categoriaProductoRespository.save(categoriaProducto));
 		
 		responseServiceMessage.setTimestamp(new Date());
@@ -88,8 +90,23 @@ List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>
 		return responseServiceObject;
 	}
 	@Override
-	public ResponseServiceObject update(CategoriaProducto categoriaProducto) {
+	public ResponseServiceObject update(int idCategoriaProducto,CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		CategoriaProducto categoriaProducto = new CategoriaProducto(); 
+		categoriaProducto.setIdCategoriaProducto(idCategoriaProducto);
+		categoriaProducto.setDescripcion(categoriaProductoRequest.getDescripcion());
+		responseServiceObject.setBody(categoriaProductoRespository.save(categoriaProducto));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
 	}
 }
