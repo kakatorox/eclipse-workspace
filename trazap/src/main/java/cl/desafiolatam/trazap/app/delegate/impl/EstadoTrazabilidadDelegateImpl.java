@@ -17,25 +17,25 @@ public class EstadoTrazabilidadDelegateImpl implements EstadoTrazabilidadDelegat
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return estadoTrazabilidadService.findAll();
 	}
 
 	@Override
 	public ResponseServiceObject save(EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return estadoTrazabilidadService.save(estadoTrazabilidadRequest);
 	}
 
 	@Override
-	public ResponseServiceObject delete(int id) {
+	public ResponseServiceObject delete(int idEstadoTrazabilidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return estadoTrazabilidadService.delete(idEstadoTrazabilidad);
 	}
 
 	@Override
 	public ResponseServiceObject update(int idEstadoTrazabilidad, EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return estadoTrazabilidadService.update(idEstadoTrazabilidad,estadoTrazabilidadRequest);
 	}
 
 }

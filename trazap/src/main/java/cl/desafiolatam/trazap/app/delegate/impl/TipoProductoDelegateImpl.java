@@ -16,25 +16,25 @@ public class TipoProductoDelegateImpl implements TipoProductoDelegate{
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoProductoService.findAll();
 	}
 
 	@Override
 	public ResponseServiceObject delete(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoProductoService.delete(id);
 	}
 
 	@Override
 	public ResponseServiceObject save(TipoProductoRequest tipoProductoRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoProductoService.save(tipoProductoRequest);
 	}
 
 	@Override
 	public ResponseServiceObject update(int idTipoProducto, TipoProductoRequest tipoProductoRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return tipoProductoService.update(idTipoProducto,tipoProductoRequest);
 	}
 
 }

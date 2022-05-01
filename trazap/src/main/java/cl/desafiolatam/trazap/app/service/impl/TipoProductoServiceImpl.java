@@ -14,6 +14,7 @@ import cl.desafiolatam.trazap.app.service.TipoProductoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
+import cl.desafiolatam.trazap.app.ui.model.request.TipoProductoRequest;
 
 @Service("tipoProductoService")
 public class TipoProductoServiceImpl implements TipoProductoService{
@@ -24,10 +25,11 @@ public class TipoProductoServiceImpl implements TipoProductoService{
 	@Autowired
 	private ResponseServiceMessage responseServiceMessage;
 	@Override
-	public ResponseServiceObject save(TipoProducto tipoProducto) {
+	public ResponseServiceObject save(TipoProductoRequest tipoProductoRequest) {
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-			
+				TipoProducto tipoProducto = new TipoProducto();
+				tipoProducto.setDescripcion(tipoProductoRequest.getDescripcion());
 				responseServiceObject.setBody(tipoProductoRepository.save(tipoProducto));
 				
 				responseServiceMessage.setTimestamp(new Date());
@@ -82,29 +84,48 @@ public class TipoProductoServiceImpl implements TipoProductoService{
 	}
 
 	@Override
-	public ResponseServiceObject update(TipoProducto tipoProducto) {
+	public ResponseServiceObject update(int idTipoProducto,TipoProductoRequest tipoProductoRequest) {
 		// TODO Auto-generated method stub
-//		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-//        bodegaRepository.;
-//		responseServiceObject.setBody("Borrado");
-//		
-//		responseServiceMessage.setTimestamp(new Date());
-//		responseServiceMessage.setCode("201");
-//		responseServiceMessage.setType(ResponseServiceMessageType.OK);
-//		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
-//		
-//		messageList.add(responseServiceMessage);
-//						
-//		responseServiceObject.setMessageList(messageList);
-//				
-//		return responseServiceObject;
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		TipoProducto tipoProducto = new TipoProducto();
+		tipoProducto.setIdTipoProducto(idTipoProducto);
+		tipoProducto.setDescripcion(tipoProductoRequest.getDescripcion());
+		tipoProductoRepository.save(tipoProducto);
+		responseServiceObject.setBody("Borrado");
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
 	}
 
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		List<TipoProducto> tipoProductos = new ArrayList<TipoProducto>();
+		Iterable<TipoProducto> itTipoProductos = tipoProductoRepository.findAll();
+		
+		//se agrega a it de tipo iterable con el for each  las bodegas
+		itTipoProductos.forEach(tipoProductos::add);
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setBody(tipoProductos);
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
 	}
 
 	

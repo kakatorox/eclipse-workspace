@@ -16,25 +16,25 @@ public class ProveedoresDelegateImpl implements ProveedoresDelegate{
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return proveedoresService.findAll();
 	}
 
 	@Override
 	public ResponseServiceObject delete(int idProveedores) {
 		// TODO Auto-generated method stub
-		return null;
+		return proveedoresService.delete(idProveedores);
 	}
 
 	@Override
 	public ResponseServiceObject save(ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return proveedoresService.save(proveedoresRequest);
 	}
 	
 	@Override
 	public ResponseServiceObject update(int idProveedor, ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return proveedoresService.update(idProveedor,proveedoresRequest);
 	}
 
 }

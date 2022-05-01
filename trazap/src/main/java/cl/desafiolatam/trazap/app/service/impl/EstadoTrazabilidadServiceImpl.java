@@ -15,6 +15,7 @@ import cl.desafiolatam.trazap.app.service.EstadoTrazabilidadService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
+import cl.desafiolatam.trazap.app.ui.model.request.EstadoTrazabilidadRequest;
 
 @Service("estadoTrazabilidadService")
 public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
@@ -25,10 +26,10 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 	@Autowired
 	private ResponseServiceMessage responseServiceMessage;
 	@Override
-	public ResponseServiceObject save(EstadoTrazabilidad estadoTrazabilidad) {
+	public ResponseServiceObject save(EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-			
+				EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
 				responseServiceObject.setBody(estadoTrazabilidadRepository.save(estadoTrazabilidad));
 				
 				responseServiceMessage.setTimestamp(new Date());
@@ -44,11 +45,11 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 	}
 
 	@Override
-	public ResponseServiceObject findById(int id) {
+	public ResponseServiceObject findById(int idEstadoTrazabilidad) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		
-		responseServiceObject.setBody(estadoTrazabilidadRepository.findById(id));
+		responseServiceObject.setBody(estadoTrazabilidadRepository.findById(idEstadoTrazabilidad));
 		
 		responseServiceMessage.setTimestamp(new Date());
 		responseServiceMessage.setCode("201");
@@ -64,10 +65,10 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 	}
 
 	@Override
-	public ResponseServiceObject delete(int id) {
+	public ResponseServiceObject delete(int idEstadoTrazabilidad) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-		estadoTrazabilidadRepository.deleteById(id);
+		estadoTrazabilidadRepository.deleteById(idEstadoTrazabilidad);
 		responseServiceObject.setBody("Borrado");
 		
 		responseServiceMessage.setTimestamp(new Date());
@@ -83,28 +84,48 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 	}
 
 	@Override
-	public ResponseServiceObject update(Bodega bodega) {
+	public ResponseServiceObject update(int idEstadoTrazabilidad,EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
-//		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-//        bodegaRepository.;
-//		responseServiceObject.setBody("Borrado");
-//		
-//		responseServiceMessage.setTimestamp(new Date());
-//		responseServiceMessage.setCode("201");
-//		responseServiceMessage.setType(ResponseServiceMessageType.OK);
-//		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
-//		
-//		messageList.add(responseServiceMessage);
-//						
-//		responseServiceObject.setMessageList(messageList);
-//				
-//		return responseServiceObject;
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
+		estadoTrazabilidad.setIdEstadoTrazabilidad(idEstadoTrazabilidad);
+		estadoTrazabilidad.setDescripcion(estadoTrazabilidadRequest.getDescripcion());
+		estadoTrazabilidadRepository.save(estadoTrazabilidad);
+		responseServiceObject.setBody("Actualizado");
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("201");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+						
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
+		
 	}
 
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		List<EstadoTrazabilidad> estadoTrazabilidades = new ArrayList<EstadoTrazabilidad>();
+		Iterable<EstadoTrazabilidad> itEstadoTrazabilidades = estadoTrazabilidadRepository.findAll();
+		
+		//se agrega a it de tipo iterable con el for each  las bodegas
+		itEstadoTrazabilidades.forEach(estadoTrazabilidades::add);
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMensaje("Servicio Finalizado Correctamente");
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setBody(estadoTrazabilidades);
+		responseServiceObject.setMessageList(messageList);
+				
+		return responseServiceObject;
 	}
 }
