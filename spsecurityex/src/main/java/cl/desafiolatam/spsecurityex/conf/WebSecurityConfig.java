@@ -58,7 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 													 .passwordParameter("password")
 													 .and()
 													 .exceptionHandling()
-													 .accessDeniedPage("/recurso-prohibido");
+													 .accessDeniedPage("/recurso-prohibido")
+													 .;
 	}
 	
 	@Bean
