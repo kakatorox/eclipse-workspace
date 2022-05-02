@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import cl.desafiolatam.trazap.app.delegate.ProductosBodegaDelegate;
+import cl.desafiolatam.trazap.app.exceptions.ServiceException;
 import cl.desafiolatam.trazap.app.service.ProductosBodegaService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.ProductosBodegaRequest;
@@ -15,31 +16,31 @@ public class ProductosBodegaDelegateImpl implements ProductosBodegaDelegate{
 	@Override
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return productosBodegaService.findAll();
 	}
 
 	@Override
-	public ResponseServiceObject findById(Integer idProductoBodega) {
+	public ResponseServiceObject findById(Integer idProductoBodega) throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		return productosBodegaService.findById(idProductoBodega);
 	}
 
 	@Override
 	public ResponseServiceObject save(ProductosBodegaRequest productosBodegaRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return productosBodegaService.save(productosBodegaRequest);
 	}
 
 	@Override
 	public ResponseServiceObject update(int idProductoBodega, ProductosBodegaRequest productosBodegaRequest) {
 		// TODO Auto-generated method stub
-		return null;
+		return productosBodegaService.save(productosBodegaRequest);
 	}
 
 	@Override
 	public ResponseServiceObject delete(int idProductoBodega) {
 		// TODO Auto-generated method stub
-		return null;
+		return productosBodegaService.delete(idProductoBodega);
 	}
 
 }
