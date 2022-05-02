@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -22,20 +23,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(schema = "public", catalog = "bodega")
-@SequenceGenerator(name = "bodega_id_bodega_seq", initialValue = 1,allocationSize = 1,sequenceName = "bodega_id_bodega_seq")
-public class Bodega {
-
+@Table(schema = "public", catalog = "productos")
+@SequenceGenerator(name = "productos_id_producto_seq", initialValue = 1,allocationSize = 1,sequenceName = "productos_id_producto_seq")
+public class Productos {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bodega_id_bodega_seq")
-	@Column(name = "id_bodega")
-	private int idBodega;
-
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productos_id_producto_seq")
+	@Column(name = "id_producto")
+	private int idProducto;
+	
 	@Column(name = "descripcion")
 	private String descripcion;
+	
+	@JoinColumn(name = "categoria_producto_id")
+	@ManyToOne
+	private CategoriaProducto categoriaProducto;
+	
+	@JoinColumn(name = "tipo_producto_id")
+	@ManyToOne
+	private TipoProducto tipoProducto;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "producto_bodega_id")
 	private List<ProductosBodega> productosBodega;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "proveedores_productos_id")
+	private List<ProductosProveedores> productosProveedores;
 }

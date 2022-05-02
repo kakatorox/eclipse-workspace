@@ -1,5 +1,6 @@
 package cl.desafiolatam.trazap.app.repository.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,17 +23,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(schema = "public", catalog = "estado_trazabilidad")
-@SequenceGenerator(name = "estado_trazabilidad_id_estado_trazabilidad_seq", initialValue = 1,allocationSize = 1,sequenceName = "estado_trazabilidad_id_estado_trazabilidad_seq")
-public class EstadoTrazabilidad {
-
+@Table(schema = "public", catalog = "pedidos")
+@SequenceGenerator(name = "pedidos_id_pedido_seq", initialValue = 1,allocationSize = 1,sequenceName = "pedidos_id_pedido_seq")
+public class Pedido {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado_trazabilidad_id_estado_trazabilidad_seq")
-	@Column(name = "id_estado_trazabilidad")
-	private int idEstadoTrazabilidad;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pedidos_id_pedido_seq")
+	@Column(name = "id_pedido")
+	private int idPedido;
 	
-	@Column(name = "descripcion")
-	private String descripcion;
+	@Column(name = "fecha_ingreso")
+	private Date fechaIngreso;
+	
+	@Column(name = "fecha_recibido")
+	private Date fechaRecibido;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "pedido_detalle_id")
+	private List<DetallePedido> detallePedido;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "trazabilidad_id")

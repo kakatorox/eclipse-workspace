@@ -1,6 +1,7 @@
 package cl.desafiolatam.trazap;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.TipoProducto;
 import cl.desafiolatam.trazap.app.service.BodegaService;
+import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 import cl.desafiolatam.trazap.app.ui.model.request.EstadoTrazabilidadRequest;
@@ -123,20 +125,15 @@ public class TrazapApplication {
 	}
 	
 	
-//
+
 //	@Bean
-//	public CommandLineRunner findAllBodega() {
-//		
+//	public CommandLineRunner findAllBodega() {		
 //		return (args) ->{
 //			Bodega bodega = new Bodega();
 //			bodega.setDescripcion("Mi Bodega");
-//			//Iterator<Bodega> itBodega = bodegaDelegate.findAll().toString();
+//			ResponseServiceObject itBodega = bodegaDelegate.findAll();
 //			while (itBodega.hasNext()) {
 //				logger.info(itBodega.next().toString());
-//				
-//			}
-//			while (bodegaDelegate.findAll()) {
-//				type type = (type) en.nextElement();
 //				
 //			}
 //		};
