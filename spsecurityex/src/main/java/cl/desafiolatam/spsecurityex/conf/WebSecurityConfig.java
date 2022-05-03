@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 													 .and()
 													 .exceptionHandling()
 													 .accessDeniedPage("/recurso-prohibido")
-													 .;
+													 ;
 	}
 	
 	@Bean
