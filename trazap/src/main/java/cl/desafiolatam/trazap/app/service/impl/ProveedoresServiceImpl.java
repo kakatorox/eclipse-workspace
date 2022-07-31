@@ -84,11 +84,11 @@ public class ProveedoresServiceImpl implements ProveedoresService {
 	}
 
 	@Override
-	public ResponseServiceObject update(int idProveedores,ProveedoresRequest proveedoresRequest) {
+	public ResponseServiceObject update(ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		Proveedores proveedores = new Proveedores();
-		proveedores.setIdProveedor(idProveedores);
+		proveedores.setIdProveedor(proveedoresRequest.getIdProveedor());
 		proveedores.setRazonSocial(proveedoresRequest.getRazonSocial());
 		proveedores.setRutProveedor(proveedoresRequest.getRutProveedor());
 		proveedoresRespository.save(proveedores);

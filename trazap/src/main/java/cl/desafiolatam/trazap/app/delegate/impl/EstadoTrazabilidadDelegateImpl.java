@@ -32,9 +32,9 @@ public class EstadoTrazabilidadDelegateImpl implements EstadoTrazabilidadDelegat
 	}
 
 	@Override
-	public ResponseServiceObject update(int idEstadoTrazabilidad, EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
+	public ResponseServiceObject update(EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
-		return estadoTrazabilidadService.update(idEstadoTrazabilidad,estadoTrazabilidadRequest);
+		return estadoTrazabilidadService.update(estadoTrazabilidadRequest);
 	}
 
 }

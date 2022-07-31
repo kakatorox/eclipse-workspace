@@ -83,11 +83,11 @@ public class EstadoTrazabilidadServiceImpl implements EstadoTrazabilidadService{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idEstadoTrazabilidad,EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
+	public ResponseServiceObject update(EstadoTrazabilidadRequest estadoTrazabilidadRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
-		estadoTrazabilidad.setIdEstadoTrazabilidad(idEstadoTrazabilidad);
+		estadoTrazabilidad.setIdEstadoTrazabilidad(estadoTrazabilidadRequest.getIdEstadoTrazabilidad());
 		estadoTrazabilidad.setDescripcion(estadoTrazabilidadRequest.getDescripcion());
 		estadoTrazabilidadRepository.save(estadoTrazabilidad);
 		responseServiceObject.setBody("Actualizado");

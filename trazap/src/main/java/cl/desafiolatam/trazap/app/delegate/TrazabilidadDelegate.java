@@ -12,7 +12,7 @@ public interface TrazabilidadDelegate {
 
 	public ResponseServiceObject save(TrazabilidadRequest trazabilidadRequest);
 
-	public ResponseServiceObject update(int idTrazabilidad, TrazabilidadRequest trazabilidadRequest);
+	public ResponseServiceObject update(TrazabilidadRequest trazabilidadRequest);
 
 	public ResponseServiceObject delete(int idTrazabilidad);
 

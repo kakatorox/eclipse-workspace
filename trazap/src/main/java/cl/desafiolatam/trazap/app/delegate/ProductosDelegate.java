@@ -12,7 +12,7 @@ public interface ProductosDelegate {
 
 	public ResponseServiceObject save(ProductosRequest productosRequest);
 
-	public ResponseServiceObject update(int idProducto, ProductosRequest productosRequest);
+	public ResponseServiceObject update(ProductosRequest productosRequest);
 
 	public ResponseServiceObject delete(int idProducto);
 

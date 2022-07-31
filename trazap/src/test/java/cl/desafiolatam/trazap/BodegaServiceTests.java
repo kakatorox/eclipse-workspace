@@ -63,21 +63,7 @@ public class BodegaServiceTests {
 		responseServiceObject.setMessageList(messageList);
 	}
 	
-	@Test
-	public void saveBodega() {
-		
-		generateMockResponse(bodegaMock1, "201", ResponseServiceMessageType.OK,"Servicio Finalizado Correctamente");
-		
-		BodegaRequest bodegaAux = new BodegaRequest();
-		bodegaAux.setDescripcion("bodega ET");
-		
-		when(bodegaService.save(bodegaAux)).thenReturn(responseServiceObject);
-		
-		ResponseServiceObject respuesta = bodegaService.save(bodegaAux);
-		
-		assertThat(((Bodega) respuesta.getBody()).getIdBodega()).isEqualTo(1);
-		assertThat(respuesta).isEqualTo(responseServiceObject);
-	}
+	
 	
 	@Test
 	public void findAllBodega() {

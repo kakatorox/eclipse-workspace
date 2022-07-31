@@ -8,12 +8,12 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.DetallePedidoRepository;
 import cl.desafiolatam.trazap.app.repository.PedidoRepository;
 import cl.desafiolatam.trazap.app.repository.model.DetallePedido;
-import cl.desafiolatam.trazap.app.repository.model.Pedido;
+import cl.desafiolatam.trazap.app.repository.model.Pedidos;
 import cl.desafiolatam.trazap.app.repository.model.ProductosProveedores;
 import cl.desafiolatam.trazap.app.service.PedidoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
@@ -36,8 +36,8 @@ public class PedidoServiceImpl implements PedidoService {
 	public ResponseServiceObject findAll() {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-		List<Pedido> pedidos = new ArrayList<Pedido>();
-		Iterable<Pedido> itPedidos = pedidoRepository.findAll();
+		List<Pedidos> pedidos = new ArrayList<Pedidos>();
+		Iterable<Pedidos> itPedidos = pedidoRepository.findAll();
 		
 		//se agrega a it de tipo iterable con el for each  las bodegas
 		itPedidos.forEach(pedidos::add);
@@ -60,7 +60,7 @@ public class PedidoServiceImpl implements PedidoService {
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 				
-				Pedido pedido = new Pedido();
+				Pedidos pedido = new Pedidos();
 								
 				pedido.setIdPedido(pedidoRequest.getIdPedido());
 				pedido.setFechaIngreso(pedidoRequest.getFechaIngreso());
@@ -82,12 +82,12 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idPedido, PedidoRequest pedidoRequest) {
+	public ResponseServiceObject update(PedidoRequest pedidoRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
-		Pedido pedido = new Pedido();
+		Pedidos pedido = new Pedidos();
 		
-		pedido.setIdPedido(idPedido);
+		pedido.setIdPedido(pedidoRequest.getIdPedido());
 		pedido.setFechaIngreso(pedidoRequest.getFechaIngreso());
 		pedido.setFechaRecibido(pedidoRequest.getFechaRecibido());
 		
@@ -112,7 +112,7 @@ public class PedidoServiceImpl implements PedidoService {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		try {
-			Pedido pedido =pedidoRepository.findById(idPedido).get();
+			Pedidos pedido =pedidoRepository.findById(idPedido).get();
 			
 			responseServiceObject.setBody(pedido);
 			
@@ -151,8 +151,8 @@ public class PedidoServiceImpl implements PedidoService {
 		responseServiceMessage.setType(ResponseServiceMessageType.OK);
 		responseServiceMessage.setMensaje("Borrado");
 		
-		Iterable<Pedido> itPedidos = pedidoRepository.findAll();
-		List<Pedido> pedidos = new ArrayList<Pedido>();
+		Iterable<Pedidos> itPedidos = pedidoRepository.findAll();
+		List<Pedidos> pedidos = new ArrayList<Pedidos>();
 		//se agrega a it de tipo iterable con el for each  las bodegas
 		itPedidos.forEach(pedidos::add);
 		

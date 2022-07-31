@@ -34,7 +34,5 @@ public class TipoProducto {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "producto_id")
-	private List<Productos> productos;
+	
 }

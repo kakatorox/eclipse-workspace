@@ -30,7 +30,7 @@ public class Trazabilidad {
 	
 	@JoinColumn(name = "pedido_id")
 	@ManyToOne
-	private Pedido pedido;
+	private Pedidos pedido;
 	
 	@Column(name = "fecha_inicio_preparacion")
 	private Date fechaInicioPreparacion;

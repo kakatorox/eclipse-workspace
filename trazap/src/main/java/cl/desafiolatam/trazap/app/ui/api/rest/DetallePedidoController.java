@@ -19,7 +19,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.DetallePedidoRequest;
 
 @RestController
-@RequestMapping("/detallePedido")
+@RequestMapping("/ws/detallePedido")
 public class DetallePedidoController {
 	@Autowired
 	private DetallePedidoDelegate detallePedidoDelegate;
@@ -46,21 +46,14 @@ public class DetallePedidoController {
 		return new ResponseEntity<ResponseServiceObject>(detallePedidoDelegate.save(detallePedidoRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idDetallePedido}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateDetallePedido(@PathVariable int idDetallePedido, @RequestBody DetallePedidoRequest detallePedidoRequest){
-		return new ResponseEntity<ResponseServiceObject>(detallePedidoDelegate.update(idDetallePedido,detallePedidoRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateDetallePedido(@RequestBody DetallePedidoRequest detallePedidoRequest){
+		return new ResponseEntity<ResponseServiceObject>(detallePedidoDelegate.update(detallePedidoRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idDetallePedido}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteDetallePedido(@PathVariable int idDetallePedido){
-		return new ResponseEntity<ResponseServiceObject>(detallePedidoDelegate.delete(idDetallePedido), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteDetallePedido(@RequestBody DetallePedidoRequest detallePedidoRequest){
+		return new ResponseEntity<ResponseServiceObject>(detallePedidoDelegate.delete(detallePedidoRequest.getIdDetallePedido()), HttpStatus.OK);
 	}
 	
 }

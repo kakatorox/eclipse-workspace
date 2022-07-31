@@ -32,9 +32,9 @@ public class DetallePedidoDelegateImpl implements DetallePedidoDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idDetallePedido, DetallePedidoRequest detallePedidoRequest) {
+	public ResponseServiceObject update(DetallePedidoRequest detallePedidoRequest) {
 		// TODO Auto-generated method stub
-		return detallePedidoService.update(idDetallePedido, detallePedidoRequest);
+		return detallePedidoService.update(detallePedidoRequest);
 	}
 
 	@Override

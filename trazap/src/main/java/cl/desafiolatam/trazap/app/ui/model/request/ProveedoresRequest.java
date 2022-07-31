@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class ProveedoresRequest {
 
 	private int idProveedor;
-	private String RutProveedor;
-	private String RazonSocial;
+	private String rutProveedor;
+	private String razonSocial;
 }

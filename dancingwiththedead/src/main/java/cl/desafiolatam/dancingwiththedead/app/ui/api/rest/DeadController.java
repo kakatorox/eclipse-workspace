@@ -11,10 +11,14 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.desafiolatam.dancingwiththedead.app.ui.model.request.DeadRequest;
@@ -67,5 +71,41 @@ public class DeadController {
 		
 	}
 	
+	@PutMapping(
+			path="/{idDead}",
+			produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+		)
+	public ResponseEntity<DeadResponse> updateBodegas(@PathVariable String idDead, @RequestBody DeadRequest deadRequest){
+		
+		if (this.deadlList == null) {
+			this.deadlList = new ArrayList<DeadResponse>();
+			
+			for (DeadResponse deadResponse : deadlList) {
+				if (deadResponse.getDeadID().equals(idDead)) {
+					System.out.println("Actualizado");
+				} 
+			}
+			
+		}	
+		return new ResponseEntity<DeadResponse>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/{idDead}",method={RequestMethod.DELETE, RequestMethod.GET})
+	public ResponseEntity<DeadResponse> deleteBodegas(@PathVariable("idDead") String idDead){
+		
+		if (this.deadlList == null) {
+			this.deadlList = new ArrayList<DeadResponse>();			
+		}else {
+			for (DeadResponse deadResponse : deadlList) {
+				if (idDead.contentEquals(deadResponse.getDeadID())) {
+					System.out.println("Borrado");
+					
+				} 
+			}
+		}	
+		
+		return new ResponseEntity<DeadResponse>(HttpStatus.OK);
+	}
 	
 }

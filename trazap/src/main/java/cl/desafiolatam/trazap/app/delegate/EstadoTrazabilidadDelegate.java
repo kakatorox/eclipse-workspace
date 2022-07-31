@@ -7,5 +7,5 @@ public interface EstadoTrazabilidadDelegate {
 	public ResponseServiceObject findAll();
 	public ResponseServiceObject save(EstadoTrazabilidadRequest estadoTrazabilidadRequest);
 	public ResponseServiceObject delete(int id);
-	public ResponseServiceObject update(int idEstadoTrazabilidad, EstadoTrazabilidadRequest estadoTrazabilidadRequest);
+	public ResponseServiceObject update(EstadoTrazabilidadRequest estadoTrazabilidadRequest);
 }

@@ -19,7 +19,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.PedidoRequest;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/ws/pedidos")
 public class PedidoController {
 	@Autowired
 	private PedidoDelegate pedidoDelegate;
@@ -46,20 +46,13 @@ public class PedidoController {
 		return new ResponseEntity<ResponseServiceObject>(pedidoDelegate.save(pedidoRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idPedido}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updatePedido(@PathVariable int idPedido, @RequestBody PedidoRequest pedidoRequest){
-		return new ResponseEntity<ResponseServiceObject>(pedidoDelegate.update(idPedido,pedidoRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updatePedido(@RequestBody PedidoRequest pedidoRequest){
+		return new ResponseEntity<ResponseServiceObject>(pedidoDelegate.update(pedidoRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idPedido}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deletePedido(@PathVariable int idPedido){
-		return new ResponseEntity<ResponseServiceObject>(pedidoDelegate.delete(idPedido), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deletePedido(@RequestBody PedidoRequest pedidoRequest){
+		return new ResponseEntity<ResponseServiceObject>(pedidoDelegate.delete(pedidoRequest.getIdPedido()), HttpStatus.OK);
 	}
 }

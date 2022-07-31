@@ -1,6 +1,7 @@
 package cl.desafiolatam.array;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class MultiplosDeTres {
@@ -25,16 +26,18 @@ public class MultiplosDeTres {
 		System.out.println("    Suma :"+suma(vis).get(0));
 		System.out.println("Promedio :"+suma(vis).get(1));
 		
-		int number = 5;
+		String number = "pato";
 
-		int result = someFunc(number) + number;
+		 System.out.println(someFunc(number));
 
 	}
 	
 
-	static int someFunc(int aNumber) {
-	  int newNumber = 5 + aNumber;
-	  number = newNumber;
+	public static String someFunc(String number) {
+	  String newNumber = "";
+	  for (int i = number.length()-1; 0 <= i; i--) {
+			  newNumber += number.charAt(i);
+		}
 	  return newNumber;
 	}
 	
@@ -52,6 +55,5 @@ public class MultiplosDeTres {
 		resultado.add(prom);
 		return resultado;
 	}
-	static void greetings() {
-				}
+	
 }

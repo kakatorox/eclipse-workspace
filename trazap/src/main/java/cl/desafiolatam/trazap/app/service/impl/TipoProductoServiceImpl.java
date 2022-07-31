@@ -83,11 +83,11 @@ public class TipoProductoServiceImpl implements TipoProductoService{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idTipoProducto,TipoProductoRequest tipoProductoRequest) {
+	public ResponseServiceObject update(TipoProductoRequest tipoProductoRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		TipoProducto tipoProducto = new TipoProducto();
-		tipoProducto.setIdTipoProducto(idTipoProducto);
+		tipoProducto.setIdTipoProducto(tipoProductoRequest.getIdTipoProducto());
 		tipoProducto.setDescripcion(tipoProductoRequest.getDescripcion());
 		tipoProductoRepository.save(tipoProducto);
 		responseServiceObject.setBody("Borrado");

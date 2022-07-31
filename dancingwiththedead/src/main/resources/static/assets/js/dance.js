@@ -42,10 +42,10 @@ $(document).ready(function () {
 				console.log(JSON.stringify(row));
 				console.log($.param(row))
 				return [
-					"<a class='like' href='#' data-toggle='modal' data-target='#modalEditar' onclick='onClickEditar(\"" + JSON.stringify(row).split('"').join('\\"') + "\");' title='Like'>",
+					"<a class='like' href='#' data-toggle='modal' data-target='#modalEditar' onclick='onClickEditar(\"" + JSON.stringify(row).split('"').join('\\"') + "\");' title='Edit'>",
 					"<i class='bi bi-pencil'></i>",
 					"</a>  ",
-					"<a class='remove' href='#'data-toggle='modal' data-target='#modalEliminar' onclick='onClickEliminar(\"" + row.idAlumno + "\");' title='Eliminar'>",
+					"<a class='remove' href='#'data-toggle='modal' data-target='#modalEliminar' onclick='onClickEliminar(\"" + row.deadID + "\");' title='Delete'>",
 					'<i class="fa fa-trash"></i>',
 					'</a>'
 				].join('');
@@ -65,27 +65,12 @@ function formatoFecha(fecha, formato) {
 
     return formato.replace(/dd|mm|yy|yyyy/gi, matched => map[matched])
 }
-function onClickEditar(row) {
-	//let rowObj = JSON.parse(row);
-	var alumnoDto = JSON.parse(row);
-	$("#idTxtEditarId").val(alumnoDto.idAlumno);
-	$("#idTxtEditarNombre").val(alumnoDto.nombre);
-	$("#idTxtEditarApellido").val(alumnoDto.apellido);
-	$("#idTxtEditarFecNacimiento").val(alumnoDto.fechaNac);
-	var select = document.getElementById('idSelEditarCurso');
 
-	for (var i = 0, optionsLength = select.length; i < optionsLength; i++) {
-		console.log(select[i].text);
-		console.log(alumnoDto.curso.descripcion);
-        if (select[i].text == alumnoDto.curso.descripcion) {
-	
-            select.selectedIndex = i;
-            return true;
-        }
-    }
-}
 
 $("#idBtnEditarAlumno").click(function() {
+	
+	alert("asd")
+	
 		var dataAlumno = {
 							"idAlumno":$("#idTxtEditarId").val(),
 							"nombre": $("#idTxtEditarNombre").val(), 
@@ -160,34 +145,46 @@ $("#idBtnGuardar").click(function() {
 
 
 function onClickEliminar(row){
-		
-	console.log(row);
+		alert(row)
+		var dataDead = {
+			"idDead" : row
+		}
+	console.log(JSON.stringify(dataDead));
 	//let rowObj = JSON.parse(row);
-	var deadDto = JSON.parse(row);
-	$("#idTxtEliminarId").val(row);
 	$.ajax({
-					// En data puedes utilizar un objeto JSON, un array o un query string
-					data: deadDto,
-					//Cambiar a type: POST si necesario
-					type: "PUT",
-					// Formato de datos que se espera en la respuesta
-					dataType: "json",
-					// URL a la que se enviará la solicitud Ajax
-					url: "/schoolsystem-1.0.0/mantenedoralumnos.srv",
-				})
-				.done(function(data, textStatus, jqXHR) {
-					alert(data.mensaje);
-					console.log("La solicitud se ha completado correctamente.", data, textStatus, jqXHR);
-					console.log("Alumnos a refrescar", data.alumnos);
-					$table.bootstrapTable('load', data.alumnos);
-					$table.bootstrapTable('refresh');
-					
-				})
-				.fail(function(jqXHR, textStatus, errorThrown) {
-					console.log("La solicitud a fallado: ", errorThrown, textStatus, jqXHR);
-				});  
+				
+				data: dataDead,
+				type: 'DELETE',
+				contentType: "application/json",
+				accept: "application/json",
+				url: '/deadAppoinment',
+				
+			})
+			.done(function(data, textStatus, jqXHR) {
+				
+					  $.ajax({
+		                    type:"GET",
+		                    url:"/deadAppoinment",
+		                    dataType:"json",
+		                    success: function(data) {
+		                        //si todo sale bien, se agrega la funcionalidad
+		                        console.log(data);
+		                        $('#table').bootstrapTable('load', data);
+		                    },
+		                    error: function(dataError) {
+		                        console.log(dataError);
+		                    },
+		                    async: true,
+	                	});
+	
+	                console.log("Termino");
+	         });
+
+			
+			
+		
 }
-$("#idBtnEliminarAlumno").click(function() {
+$("#idBtnEliminar").click(function() {
 	
 	if(document.getElementById('idRadioEliminar').checked == false) {   
          $("#idRadioEliminar").addClass("is-invalid"); 
@@ -206,3 +203,14 @@ $("#idBtnEliminarAlumno").click(function() {
 	
 
 	});
+	
+	function onClickEditar(row) {
+	alert(row)
+	//let rowObj = JSON.parse(row);
+	var deadDto = JSON.parse(row);
+	$("#idTxtEditarId").val(deadDto.idAlumno);
+	$("#idTxtEditarNombre").val(deadDto.nombre);
+	$("#idTxtEditarApellido").val(deadDto.apellido);
+	$("#idTxtEditarFecNacimiento").val(deadDto.fechaNac);
+	
+}

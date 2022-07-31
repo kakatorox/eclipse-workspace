@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
+import cl.desafiolatam.trazap.app.repository.ProductosBodegaRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.service.BodegaService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
@@ -22,6 +24,8 @@ import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 public class BodegaServiceImpl implements BodegaService{
 	@Autowired
 	private BodegaRepository bodegaRepository;
+	@Autowired
+	private ProductosBodegaRepository productosBodegaRepository;
 	@Autowired
 	private ResponseServiceObject responseServiceObject;
 	@Autowired
@@ -50,7 +54,7 @@ public class BodegaServiceImpl implements BodegaService{
 				
 		return responseServiceObject;
 	}
-
+	
 	@Override
 	public ResponseServiceObject save(BodegaRequest bodegaRequest) {
 		// TODO Auto-generated method stub
@@ -74,11 +78,11 @@ public class BodegaServiceImpl implements BodegaService{
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idBodega, BodegaRequest bodegaRequest) {
+	public ResponseServiceObject update(BodegaRequest bodegaRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		Bodega bodega = new Bodega();
-		bodega.setIdBodega(idBodega);
+		bodega.setIdBodega(bodegaRequest.getIdBodega());
 		bodega.setDescripcion(bodegaRequest.getDescripcion());
 		
 		responseServiceObject.setBody(bodegaRepository.save(bodega));

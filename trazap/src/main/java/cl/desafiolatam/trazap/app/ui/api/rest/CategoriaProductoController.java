@@ -18,7 +18,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.CategoriaProductoRequest;
 
 @RestController
-@RequestMapping("/categoriaProducto")
+@RequestMapping("/ws/categoriaProducto")
 public class CategoriaProductoController {
 	@Autowired
 	private CategoriaProductoDelegate categoriaProductoDelegate;
@@ -36,20 +36,13 @@ public class CategoriaProductoController {
 		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.save(categoriaProductoRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idCategoriaProducto}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateCategoriaProducto(@PathVariable int idCategoriaProducto, @RequestBody CategoriaProductoRequest categoriaProductoRequest){
-		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.update(idCategoriaProducto,categoriaProductoRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateCategoriaProducto(@RequestBody CategoriaProductoRequest categoriaProductoRequest){
+		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.update(categoriaProductoRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idCategoriaProducto}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteCategoriaProducto(@PathVariable int idCategoriaProducto){
-		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.delete(idCategoriaProducto), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteCategoriaProducto(@RequestBody CategoriaProductoRequest categoriaProductoRequest){
+		return new ResponseEntity<ResponseServiceObject>(categoriaProductoDelegate.delete(categoriaProductoRequest.getIdCategoriaProducto()), HttpStatus.OK);
 	}
 }

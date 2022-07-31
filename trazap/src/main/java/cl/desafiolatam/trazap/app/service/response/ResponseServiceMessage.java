@@ -18,4 +18,5 @@ public class ResponseServiceMessage {
 	private ResponseServiceMessageType type;
 	private String mensaje;
 	
+	
 }

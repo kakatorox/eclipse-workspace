@@ -20,7 +20,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.TrazabilidadRequest;
 
 @RestController
-@RequestMapping("/trazabilidad")
+@RequestMapping("/ws/trazabilidad")
 public class TrazabilidadController {
 	@Autowired
 	private TrazabilidadDelegate trazabilidadDelegate;
@@ -47,21 +47,14 @@ public class TrazabilidadController {
 		return new ResponseEntity<ResponseServiceObject>(trazabilidadDelegate.save(trazabilidadRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idTrazabilidad}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateTrazabilidad(@PathVariable int idTrazabilidad, @RequestBody TrazabilidadRequest trazabilidadRequest){
-		return new ResponseEntity<ResponseServiceObject>(trazabilidadDelegate.update(idTrazabilidad,trazabilidadRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateTrazabilidad(@RequestBody TrazabilidadRequest trazabilidadRequest){
+		return new ResponseEntity<ResponseServiceObject>(trazabilidadDelegate.update(trazabilidadRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idTrazabilidad}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteTrazabilidad(@PathVariable int idTrazabilidad){
-		return new ResponseEntity<ResponseServiceObject>(trazabilidadDelegate.delete(idTrazabilidad), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteTrazabilidad(@RequestBody TrazabilidadRequest trazabilidadRequest){
+		return new ResponseEntity<ResponseServiceObject>(trazabilidadDelegate.delete(trazabilidadRequest.getIdTrazabilidad()), HttpStatus.OK);
 	}
 	
 }

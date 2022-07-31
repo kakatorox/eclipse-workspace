@@ -12,7 +12,7 @@ public interface DetallePedidoDelegate {
 
 	public ResponseServiceObject save(DetallePedidoRequest detallePedidoRequest);
 
-	public ResponseServiceObject update(int idDetallePedido, DetallePedidoRequest detallePedidoRequest);
+	public ResponseServiceObject update(DetallePedidoRequest detallePedidoRequest);
 
 	public ResponseServiceObject delete(int idDetallePedido);
 

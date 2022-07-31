@@ -18,7 +18,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.ProveedoresRequest;
 
 @RestController
-@RequestMapping("/proveedores")
+@RequestMapping("/ws/proveedores")
 public class ProveedoresController {
 	@Autowired
 	private ProveedoresDelegate proveedoresDelegate;
@@ -36,20 +36,13 @@ public class ProveedoresController {
 		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.save(proveedoresRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idProveedor}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateProveedores(@PathVariable int idProveedor, @RequestBody ProveedoresRequest proveedoresRequest){
-		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.update(idProveedor,proveedoresRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateProveedores(@RequestBody ProveedoresRequest proveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.update(proveedoresRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idProveedor}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteProveedor(@PathVariable int idProveedor){
-		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.delete(idProveedor), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteProveedor(@RequestBody ProveedoresRequest proveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(proveedoresDelegate.delete(proveedoresRequest.getIdProveedor()), HttpStatus.OK);
 	}
 }

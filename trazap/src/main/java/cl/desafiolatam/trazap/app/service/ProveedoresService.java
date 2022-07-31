@@ -8,5 +8,5 @@ public interface ProveedoresService {
 	public ResponseServiceObject findById(int idProveedores);
 	public ResponseServiceObject save(ProveedoresRequest proveedoresRequest);
 	public ResponseServiceObject delete(int idProveedores);
-	public ResponseServiceObject update(int idProveedores,ProveedoresRequest proveedoresRequest);
+	public ResponseServiceObject update(ProveedoresRequest proveedoresRequest);
 }

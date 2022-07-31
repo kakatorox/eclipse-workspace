@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.ProductosRepository;
 import cl.desafiolatam.trazap.app.repository.model.CategoriaProducto;
 import cl.desafiolatam.trazap.app.repository.model.Productos;
@@ -83,7 +83,7 @@ public class ProductosServiceImpl implements ProductosService{
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idProductos, ProductosRequest productosRequest) {
+	public ResponseServiceObject update(ProductosRequest productosRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		Productos productos = new Productos();
@@ -91,7 +91,7 @@ public class ProductosServiceImpl implements ProductosService{
 		TipoProducto tipoProducto = new TipoProducto();
 		categoriaProducto.setIdCategoriaProducto(productosRequest.getCategoriaProductoId());
 		tipoProducto.setIdTipoProducto(productosRequest.getTipoProductoId());
-		productos.setIdProducto(idProductos);
+		productos.setIdProducto(productosRequest.getIdProducto());
 		productos.setDescripcion(productosRequest.getDescripcion());
 		productos.setCategoriaProducto(categoriaProducto);
 		productos.setTipoProducto(tipoProducto);

@@ -8,12 +8,12 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.DetallePedidoRepository;
 import cl.desafiolatam.trazap.app.repository.ProductosProveedoresRepository;
 import cl.desafiolatam.trazap.app.repository.model.DetallePedido;
-import cl.desafiolatam.trazap.app.repository.model.Pedido;
+import cl.desafiolatam.trazap.app.repository.model.Pedidos;
 import cl.desafiolatam.trazap.app.repository.model.Productos;
 import cl.desafiolatam.trazap.app.repository.model.ProductosProveedores;
 import cl.desafiolatam.trazap.app.repository.model.Proveedores;
@@ -63,12 +63,12 @@ public class ProductosProveedoresServiceImpl implements ProductosProveedoresServ
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 				
 				ProductosProveedores productosProveedores = new ProductosProveedores();
-				Pedido pedido = new Pedido();
+				Pedidos pedido = new Pedidos();
 				Productos productos = new Productos();
 				Proveedores proveedores = new Proveedores();
 				productos.setIdProducto(productosProveedoresRequest.getProductoId());
 				proveedores.setIdProveedor(productosProveedoresRequest.getProveedorId());
-				productosProveedores.setIdProductosProveedores(productosProveedoresRequest.getIdProductoProveedor());
+				productosProveedores.setIdProductoProveedor(productosProveedoresRequest.getIdProductoProveedor());
 				productosProveedores.setProductos(productos);
 				productosProveedores.setProveedores(proveedores);
 				
@@ -87,16 +87,16 @@ public class ProductosProveedoresServiceImpl implements ProductosProveedoresServ
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idProductosProveedores, ProductosProveedoresRequest productosProveedoresRequest) {
+	public ResponseServiceObject update(ProductosProveedoresRequest productosProveedoresRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		ProductosProveedores productosProveedores = new ProductosProveedores();
-		Pedido pedido = new Pedido();
+		Pedidos pedido = new Pedidos();
 		Productos productos = new Productos();
 		Proveedores proveedores = new Proveedores();
 		productos.setIdProducto(productosProveedoresRequest.getProductoId());
 		proveedores.setIdProveedor(productosProveedoresRequest.getProveedorId());
-		productosProveedores.setIdProductosProveedores(idProductosProveedores);
+		productosProveedores.setIdProductoProveedor(productosProveedoresRequest.getIdProductoProveedor());
 		productosProveedores.setProductos(productos);
 		productosProveedores.setProveedores(proveedores);
 		

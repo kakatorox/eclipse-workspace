@@ -10,7 +10,7 @@ public interface PedidoService {
 
 	public ResponseServiceObject save(PedidoRequest pedidoRequest);
 
-	public ResponseServiceObject update(int idPedido, PedidoRequest pedidoRequest);
+	public ResponseServiceObject update(PedidoRequest pedidoRequest);
 
 	public ResponseServiceObject findById(Integer idPedido) throws ServiceException;
 

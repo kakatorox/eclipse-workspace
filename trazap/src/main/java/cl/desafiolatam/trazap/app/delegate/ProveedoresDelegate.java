@@ -7,5 +7,5 @@ public interface ProveedoresDelegate {
 	public ResponseServiceObject findAll();
 	public ResponseServiceObject save(ProveedoresRequest proveedoresRequest);
 	public ResponseServiceObject delete(int id);
-	public ResponseServiceObject update(int idProveedor, ProveedoresRequest proveedoresRequest);
+	public ResponseServiceObject update(ProveedoresRequest proveedoresRequest);
 }

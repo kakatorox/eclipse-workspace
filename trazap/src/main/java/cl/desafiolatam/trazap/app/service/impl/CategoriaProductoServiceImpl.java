@@ -88,11 +88,11 @@ List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>
 		return responseServiceObject;
 	}
 	@Override
-	public ResponseServiceObject update(int idCategoriaProducto,CategoriaProductoRequest categoriaProductoRequest) {
+	public ResponseServiceObject update(CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		CategoriaProducto categoriaProducto = new CategoriaProducto(); 
-		categoriaProducto.setIdCategoriaProducto(idCategoriaProducto);
+		categoriaProducto.setIdCategoriaProducto(categoriaProductoRequest.getIdCategoriaProducto());
 		categoriaProducto.setDescripcion(categoriaProductoRequest.getDescripcion());
 		responseServiceObject.setBody(categoriaProductoRespository.save(categoriaProducto));
 		

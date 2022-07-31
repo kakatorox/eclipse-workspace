@@ -20,7 +20,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.ProductosProveedoresRequest;
 
 @RestController
-@RequestMapping("/productosProveedores")
+@RequestMapping("/ws/productosProveedores")
 public class ProductosProveedoresController {
 	@Autowired
 	private ProductosProveedoresDelegate productosProveedoresDelegate;
@@ -47,21 +47,14 @@ public class ProductosProveedoresController {
 		return new ResponseEntity<ResponseServiceObject>(productosProveedoresDelegate.save(productosProveedoresRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idProductosProveedores}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateProductosProveedores(@PathVariable int idProductosProveedores, @RequestBody ProductosProveedoresRequest productosProveedoresRequest){
-		return new ResponseEntity<ResponseServiceObject>(productosProveedoresDelegate.update(idProductosProveedores,productosProveedoresRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateProductosProveedores(@RequestBody ProductosProveedoresRequest productosProveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(productosProveedoresDelegate.update(productosProveedoresRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idProductosProveedores}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteProductosProveedores(@PathVariable int idProductosProveedores){
-		return new ResponseEntity<ResponseServiceObject>(productosProveedoresDelegate.delete(idProductosProveedores), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteProductosProveedores(@RequestBody ProductosProveedoresRequest productosProveedoresRequest){
+		return new ResponseEntity<ResponseServiceObject>(productosProveedoresDelegate.delete(productosProveedoresRequest.getIdProductoProveedor()), HttpStatus.OK);
 	}
 	
 }

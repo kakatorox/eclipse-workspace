@@ -32,9 +32,9 @@ public class CategoriaProductoDelegateImpl implements CategoriaProductoDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest) {
+	public ResponseServiceObject update(CategoriaProductoRequest categoriaProductoRequest) {
 		// TODO Auto-generated method stub
-		return categoriaProductoService.update(idCategoriaProducto,categoriaProductoRequest);
+		return categoriaProductoService.update(categoriaProductoRequest);
 	}
 
 }

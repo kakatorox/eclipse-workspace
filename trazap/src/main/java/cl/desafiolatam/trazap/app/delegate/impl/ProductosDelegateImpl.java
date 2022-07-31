@@ -32,9 +32,9 @@ public class ProductosDelegateImpl implements ProductosDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idProducto, ProductosRequest productosRequest) {
+	public ResponseServiceObject update(ProductosRequest productosRequest) {
 		// TODO Auto-generated method stub
-		return productosService.update(idProducto, productosRequest);
+		return productosService.update(productosRequest);
 	}
 
 	@Override

@@ -31,9 +31,9 @@ public class ProveedoresDelegateImpl implements ProveedoresDelegate{
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idProveedor, ProveedoresRequest proveedoresRequest) {
+	public ResponseServiceObject update(ProveedoresRequest proveedoresRequest) {
 		// TODO Auto-generated method stub
-		return proveedoresService.update(idProveedor,proveedoresRequest);
+		return proveedoresService.update(proveedoresRequest);
 	}
 
 }

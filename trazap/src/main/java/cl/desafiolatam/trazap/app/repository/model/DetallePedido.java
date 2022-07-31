@@ -26,13 +26,13 @@ public class DetallePedido {
 	@Column(name = "id_detalle_pedido")
 	private int idDetallePedido;
 	
-	@JoinColumn(name = "proveedores_productos_id")
+	@JoinColumn(name = "proveedor_producto_id")
 	@ManyToOne
 	private ProductosProveedores productosProveedores;
 	
 	@JoinColumn(name = "pedido_id")
 	@ManyToOne
-	private Pedido pedido;
+	private Pedidos pedido;
 	
 	@Column(name = "cantidad")
 	private int cantidad;

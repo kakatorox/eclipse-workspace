@@ -10,7 +10,7 @@ public interface ProductosService {
 
 	public ResponseServiceObject save(ProductosRequest productosRequest);
 
-	public ResponseServiceObject update(int idProductos, ProductosRequest productosRequest);
+	public ResponseServiceObject update(ProductosRequest productosRequest);
 
 	public ResponseServiceObject findById(Integer idProductos) throws ServiceException;
 

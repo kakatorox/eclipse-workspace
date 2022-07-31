@@ -12,7 +12,7 @@ public interface ProductosBodegaDelegate {
 
 	public ResponseServiceObject save(ProductosBodegaRequest productosBodegaRequest);
 
-	public ResponseServiceObject update(int idProductoBodega, ProductosBodegaRequest productosBodegaRequest);
+	public ResponseServiceObject update(ProductosBodegaRequest productosBodegaRequest);
 
 	public ResponseServiceObject delete(int idProductoBodega);
 

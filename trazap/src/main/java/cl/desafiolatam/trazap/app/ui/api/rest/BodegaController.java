@@ -19,7 +19,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.BodegaRequest;
 
 @RestController
-@RequestMapping("/bodegas")
+@RequestMapping("/ws/bodegas")
 public class BodegaController {
 	
 	@Autowired
@@ -32,7 +32,7 @@ public class BodegaController {
 	}
 
 	@GetMapping(
-				path ="{idBodega}",
+				path = "{idBodega}",
 				produces = MediaType.APPLICATION_JSON_VALUE)
 	
 	public ResponseEntity<ResponseServiceObject> getBodega(@PathVariable Integer idBodega) throws ServiceException{
@@ -47,21 +47,21 @@ public class BodegaController {
 		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.save(bodegaRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idBodega}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateBodegas(@PathVariable int idBodega, @RequestBody BodegaRequest bodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.update(idBodega,bodegaRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateBodegas(@RequestBody BodegaRequest bodegaRequest){
+		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.update(bodegaRequest), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(
-				path = "{idBodega}",
-				produces = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> deleteBodegas(@PathVariable int idBodega){
-		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.delete(idBodega), HttpStatus.OK);
+	@DeleteMapping
+	public ResponseEntity<ResponseServiceObject> deleteBodegas(@RequestBody BodegaRequest bodegaRequest){
+		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.delete(bodegaRequest.getIdBodega()), HttpStatus.OK);
 	}
-	
+//	@DeleteMapping
+//	public ResponseEntity<ResponseServiceObject> deleteBodegas(@RequestParam(value ="idBodega") int idBodega){
+//		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.delete(idBodega), HttpStatus.OK);
+//	}
+//	@DeleteMapping("{idBodega}")
+//	public ResponseEntity<ResponseServiceObject> deleteBodegas(@PathVariable("idBodega") int idBodega){
+//		return new ResponseEntity<ResponseServiceObject>(bodegaDelegate.delete(idBodega), HttpStatus.OK);
+//	}
 }

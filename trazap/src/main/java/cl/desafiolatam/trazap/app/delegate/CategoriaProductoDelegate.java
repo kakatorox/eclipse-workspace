@@ -8,6 +8,6 @@ public interface CategoriaProductoDelegate {
 	public ResponseServiceObject findAll();
 	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest);
 	public ResponseServiceObject delete(int id);
-	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest);
+	public ResponseServiceObject update(CategoriaProductoRequest categoriaProductoRequest);
 
 }

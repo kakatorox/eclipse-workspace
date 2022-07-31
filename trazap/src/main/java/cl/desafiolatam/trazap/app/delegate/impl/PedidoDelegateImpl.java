@@ -32,9 +32,9 @@ public class PedidoDelegateImpl implements PedidoDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idPedido, PedidoRequest pedidoRequest) {
+	public ResponseServiceObject update(PedidoRequest pedidoRequest) {
 		// TODO Auto-generated method stub
-		return pedidoService.update(idPedido, pedidoRequest);
+		return pedidoService.update(pedidoRequest);
 	}
 
 	@Override

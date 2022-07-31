@@ -7,5 +7,5 @@ public interface TipoProductoDelegate {
 	public ResponseServiceObject findAll();
 	public ResponseServiceObject save(TipoProductoRequest tipoProductoRequest);
 	public ResponseServiceObject delete(int id);
-	public ResponseServiceObject update(int idTipoProducto, TipoProductoRequest tipoProductoRequest);
+	public ResponseServiceObject update(TipoProductoRequest tipoProductoRequest);
 }

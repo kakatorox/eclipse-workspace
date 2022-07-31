@@ -8,5 +8,5 @@ public interface EstadoTrazabilidadService {
 	public ResponseServiceObject findById(int idEstadoTrazabilidad);
 	public ResponseServiceObject save(EstadoTrazabilidadRequest estadoTrazabilidadRequest);
 	public ResponseServiceObject delete(int idEstadoTrazabilidad);
-	public ResponseServiceObject update(int idEstadoTrazabilidad,EstadoTrazabilidadRequest estadoTrazabilidadRequest);
+	public ResponseServiceObject update(EstadoTrazabilidadRequest estadoTrazabilidadRequest);
 }

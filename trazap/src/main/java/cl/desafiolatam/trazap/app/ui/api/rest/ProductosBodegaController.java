@@ -19,7 +19,7 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 import cl.desafiolatam.trazap.app.ui.model.request.ProductosBodegaRequest;
 
 @RestController
-@RequestMapping("/productosBodega")
+@RequestMapping("/ws/productosBodega")
 public class ProductosBodegaController {
 	@Autowired
 	private ProductosBodegaDelegate productosBodegaDelegate;
@@ -46,21 +46,17 @@ public class ProductosBodegaController {
 		return new ResponseEntity<ResponseServiceObject>(productosBodegaDelegate.save(productosBodegaRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping(
-				path="{idProductoBodega}",
-				produces = MediaType.APPLICATION_JSON_VALUE,
-				consumes = MediaType.APPLICATION_JSON_VALUE
-			)
-	public ResponseEntity<ResponseServiceObject> updateProductosBodega(@PathVariable int idProductoBodega, @RequestBody ProductosBodegaRequest productosBodegaRequest){
-		return new ResponseEntity<ResponseServiceObject>(productosBodegaDelegate.update(idProductoBodega,productosBodegaRequest), HttpStatus.OK);
+	@PutMapping
+	public ResponseEntity<ResponseServiceObject> updateProductosBodega(@RequestBody ProductosBodegaRequest productosBodegaRequest){
+		return new ResponseEntity<ResponseServiceObject>(productosBodegaDelegate.update(productosBodegaRequest), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(
 				path = "{idProductoBodega}",
 				produces = MediaType.APPLICATION_JSON_VALUE
 			)
-	public ResponseEntity<ResponseServiceObject> deleteProductosBodega(@PathVariable int idProductoBodega){
-		return new ResponseEntity<ResponseServiceObject>(productosBodegaDelegate.delete(idProductoBodega), HttpStatus.OK);
+	public ResponseEntity<ResponseServiceObject> deleteProductosBodega(@RequestBody ProductosBodegaRequest productosBodegaRequest){
+		return new ResponseEntity<ResponseServiceObject>(productosBodegaDelegate.delete(productosBodegaRequest.getIdProductoBodega()), HttpStatus.OK);
 	}
 	
 }

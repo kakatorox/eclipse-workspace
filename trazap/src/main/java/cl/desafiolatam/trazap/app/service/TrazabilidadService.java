@@ -10,7 +10,7 @@ public interface TrazabilidadService {
 
 	public ResponseServiceObject save(TrazabilidadRequest trazabilidadRequest);
 
-	public ResponseServiceObject update(int idTrazabilidad, TrazabilidadRequest trazabilidadRequest);
+	public ResponseServiceObject update(TrazabilidadRequest trazabilidadRequest);
 
 	public ResponseServiceObject findById(Integer idTrazabilidad) throws ServiceException;
 

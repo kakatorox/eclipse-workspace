@@ -8,5 +8,5 @@ public interface CategoriaProductoService {
 	public ResponseServiceObject findById(int idCategoriaProducto);
 	public ResponseServiceObject save(CategoriaProductoRequest categoriaProductoRequest);
 	public ResponseServiceObject delete(int idCategoriaProducto);
-	public ResponseServiceObject update(int idCategoriaProducto, CategoriaProductoRequest categoriaProductoRequest);
+	public ResponseServiceObject update(CategoriaProductoRequest categoriaProductoRequest);
 }

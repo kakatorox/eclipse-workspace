@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,10 +31,10 @@ import lombok.NoArgsConstructor;
 public class ProductosProveedores {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productos_proveedores_id_producto_proveedor_seq")
-	@Column(name = "id_productos_proveedores")
-	private int idProductosProveedores;
+	@Column(name = "id_producto_proveedor")
+	private int idProductoProveedor;
 	
-	@JoinColumn(name = "proveedores_id")
+	@JoinColumn(name = "proveedor_id")
 	@ManyToOne
 	private Proveedores proveedores;
 	
@@ -39,7 +42,5 @@ public class ProductosProveedores {
 	@ManyToOne
 	private Productos productos;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "pedido_detalle_id")
-	private List<DetallePedido> detallePedido;
+	
 }

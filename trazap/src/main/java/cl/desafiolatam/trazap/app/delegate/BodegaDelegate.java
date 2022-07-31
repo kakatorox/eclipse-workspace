@@ -9,5 +9,5 @@ public interface BodegaDelegate {
 	public ResponseServiceObject save(BodegaRequest bodegaRequest);
 	public ResponseServiceObject delete(int id);
 	public ResponseServiceObject findById(Integer id) throws ServiceException;
-	public ResponseServiceObject update(int idBodega, BodegaRequest bodegaRequest);
+	public ResponseServiceObject update(BodegaRequest bodegaRequest);
 }

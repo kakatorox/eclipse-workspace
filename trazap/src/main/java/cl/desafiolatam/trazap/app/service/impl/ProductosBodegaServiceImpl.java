@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.ProductosBodegaRepository;
 import cl.desafiolatam.trazap.app.repository.model.Bodega;
 import cl.desafiolatam.trazap.app.repository.model.Productos;
@@ -84,7 +84,7 @@ public class ProductosBodegaServiceImpl implements ProductosBodegaService {
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idProductosBodega, ProductosBodegaRequest productosBodegaRequest) {
+	public ResponseServiceObject update(ProductosBodegaRequest productosBodegaRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		ProductosBodega productosBodega = new ProductosBodega();
@@ -94,7 +94,7 @@ public class ProductosBodegaServiceImpl implements ProductosBodegaService {
 		bodega.setIdBodega(productosBodegaRequest.getBodegaId());
 		productos.setIdProducto(productosBodegaRequest.getProductoId());
 		
-		productosBodega.setIdProductoBodega(idProductosBodega);
+		productosBodega.setIdProductoBodega(productosBodegaRequest.getIdProductoBodega());
 		productosBodega.setStock(productosBodegaRequest.getStock());
 		productosBodega.setBodega(bodega);
 		productosBodega.setProductos(productos);

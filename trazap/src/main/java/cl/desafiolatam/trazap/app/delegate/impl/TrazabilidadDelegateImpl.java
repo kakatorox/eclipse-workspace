@@ -32,9 +32,9 @@ public class TrazabilidadDelegateImpl implements TrazabilidadDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(int idTrazabilidad, TrazabilidadRequest trazabilidadRequest) {
+	public ResponseServiceObject update(TrazabilidadRequest trazabilidadRequest) {
 		// TODO Auto-generated method stub
-		return trazabilidadService.update(idTrazabilidad,trazabilidadRequest);
+		return trazabilidadService.update(trazabilidadRequest);
 	}
 
 	@Override

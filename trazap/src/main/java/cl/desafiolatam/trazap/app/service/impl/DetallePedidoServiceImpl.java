@@ -8,11 +8,11 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.DetallePedidoRepository;
 import cl.desafiolatam.trazap.app.repository.model.DetallePedido;
-import cl.desafiolatam.trazap.app.repository.model.Pedido;
+import cl.desafiolatam.trazap.app.repository.model.Pedidos;
 import cl.desafiolatam.trazap.app.repository.model.ProductosProveedores;
 import cl.desafiolatam.trazap.app.service.DetallePedidoService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
@@ -58,10 +58,10 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 				DetallePedido detallePedido = new DetallePedido();
-				Pedido pedido = new Pedido();
+				Pedidos pedido = new Pedidos();
 				ProductosProveedores productosProveedores = new ProductosProveedores();
 				pedido.setIdPedido(detallePedidoRequest.getPedidoId());
-				productosProveedores.setIdProductosProveedores(detallePedidoRequest.getProveedorProductoId());
+				productosProveedores.setIdProductoProveedor(detallePedidoRequest.getProveedorProductoId());
 				detallePedido.setIdDetallePedido(detallePedidoRequest.getIdDetallePedido());
 				detallePedido.setCantidad(detallePedidoRequest.getCantidad());
 				detallePedido.setPedido(pedido);
@@ -82,15 +82,15 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idDetallePedido, DetallePedidoRequest detallePedidoRequest) {
+	public ResponseServiceObject update(DetallePedidoRequest detallePedidoRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		DetallePedido detallePedido = new DetallePedido();
-		Pedido pedido = new Pedido();
+		Pedidos pedido = new Pedidos();
 		ProductosProveedores productosProveedores = new ProductosProveedores();
 		pedido.setIdPedido(detallePedidoRequest.getPedidoId());
-		productosProveedores.setIdProductosProveedores(detallePedidoRequest.getProveedorProductoId());
-		detallePedido.setIdDetallePedido(idDetallePedido);
+		productosProveedores.setIdProductoProveedor(detallePedidoRequest.getProveedorProductoId());
+		detallePedido.setIdDetallePedido(detallePedidoRequest.getIdDetallePedido());
 		detallePedido.setCantidad(detallePedidoRequest.getCantidad());
 		detallePedido.setPedido(pedido);
 		detallePedido.setProductosProveedores(productosProveedores);

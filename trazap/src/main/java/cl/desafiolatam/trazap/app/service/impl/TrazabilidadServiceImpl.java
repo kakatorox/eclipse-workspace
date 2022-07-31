@@ -8,11 +8,11 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.desafiolata.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.exceptions.ServiceException;
+import cl.desafiolatam.trazap.app.messagemanager.MessageManager;
 import cl.desafiolatam.trazap.app.repository.TrazabilidadRepository;
 import cl.desafiolatam.trazap.app.repository.model.EstadoTrazabilidad;
-import cl.desafiolatam.trazap.app.repository.model.Pedido;
+import cl.desafiolatam.trazap.app.repository.model.Pedidos;
 import cl.desafiolatam.trazap.app.repository.model.Trazabilidad;
 import cl.desafiolatam.trazap.app.service.TrazabilidadService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
@@ -58,7 +58,7 @@ public class TrazabilidadServiceImpl implements TrazabilidadService{
 		// TODO Auto-generated method stub
 				List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 				Trazabilidad trazabilidad = new Trazabilidad();
-				Pedido pedido = new Pedido();
+				Pedidos pedido = new Pedidos();
 				EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
 				estadoTrazabilidad.setIdEstadoTrazabilidad(trazabilidadRequest.getTrazabilidadEstadoId());
 				pedido.setIdPedido(trazabilidadRequest.getPedidoId());
@@ -87,15 +87,15 @@ public class TrazabilidadServiceImpl implements TrazabilidadService{
 	}
 	
 	@Override
-	public ResponseServiceObject update(int idTrazabilidad, TrazabilidadRequest trazabilidadRequest) {
+	public ResponseServiceObject update(TrazabilidadRequest trazabilidadRequest) {
 		// TODO Auto-generated method stub
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		Trazabilidad trazabilidad = new Trazabilidad();
-		Pedido pedido = new Pedido();
+		Pedidos pedido = new Pedidos();
 		EstadoTrazabilidad estadoTrazabilidad = new EstadoTrazabilidad();
 		estadoTrazabilidad.setIdEstadoTrazabilidad(trazabilidadRequest.getTrazabilidadEstadoId());
 		pedido.setIdPedido(trazabilidadRequest.getPedidoId());
-		trazabilidad.setIdTrazabilidad(idTrazabilidad);
+		trazabilidad.setIdTrazabilidad(trazabilidadRequest.getIdTrazabilidad());
 		trazabilidad.setPedido(pedido);
 		trazabilidad.setFechaInicioPreparacion(trazabilidadRequest.getFechaInicioPreparacion());
 		trazabilidad.setFechaFinPreparacion(trazabilidadRequest.getFechaFinPreparacion());
