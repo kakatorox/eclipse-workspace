@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import cl.presentacion.formuval.model.Persona;
@@ -27,7 +28,8 @@ public class PersonaServiceImpl  implements PersonaService{
 	
 	@Override
 	public List<Persona> findAll(){
-		return personaRepository.findAll();
+		return personaRepository.findAll(Sort.by(Sort.Direction.DESC,"idPersona"));
+//		return personaRepository.findAll(Sort.by(Sort.Direction.ASC,"idPersona"));
 	}
 	
 	@Override

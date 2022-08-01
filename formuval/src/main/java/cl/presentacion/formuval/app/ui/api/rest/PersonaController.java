@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.presentacion.formuval.app.delegate.PersonaDelegate;
 import cl.presentacion.formuval.model.Persona;
 
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class PersonaController {
@@ -27,9 +29,11 @@ public class PersonaController {
 	@Autowired
 	private PersonaDelegate personaDelegate;
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(
+				produces = MediaType.APPLICATION_JSON_VALUE
+			)
 	public ResponseEntity<List<Persona>> findAllPersonas() {
-		
+		System.out.println(personaDelegate.findAll());
 		return new ResponseEntity<List<Persona>>(personaDelegate.findAll(), HttpStatus.OK);
 	}
 	
@@ -37,7 +41,6 @@ public class PersonaController {
 				value = "{id}"
 			)
 	public ResponseEntity<Optional<Persona>> findPersonaById(@PathVariable int id ) {
-		 
 		return new ResponseEntity<Optional<Persona>>(personaDelegate.findById(id), HttpStatus.OK);
 	}
 	
@@ -53,16 +56,16 @@ public class PersonaController {
 	
 	@PutMapping(
 			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE
+			consumes = MediaType.APPLICATION_JSON_VALUE			
 			)
 	public ResponseEntity<Persona> updatePersona(@RequestBody Persona persona){
 		return new ResponseEntity<Persona>(personaDelegate.save(persona), HttpStatus.OK);
 		
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<Object> deletePersona(@RequestBody Persona persona){
-		personaDelegate.deleteById(persona.getIdPersona());
+	@DeleteMapping(value="{id}")
+	public ResponseEntity<Object> deletePersonaById(@PathVariable int id){
+		personaDelegate.deleteById(id);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 		
 	}
